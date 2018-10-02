@@ -30,7 +30,7 @@ home_button:buttons(
 
 -- home_button
 
-local add_button = mat_icon_button(beautiful.add)
+local add_button = mat_icon_button(wibox.widget.imagebox(beautiful.add))
 add_button:buttons(
     gears.table.join(
         awful.button(

@@ -2,8 +2,8 @@ local wibox = require('wibox')
 local gears = require('gears')
 local clickable_container = require('widgets.clickable-container')
 
-function build(icon, args)
-    local icon = wibox.widget.imagebox(icon)
+function build(imagebox, args)
+    local icon = imagebox
     local container = clickable_container()
 
     container:set_widget(wibox.container.margin(icon, 6, 6, 6, 6))

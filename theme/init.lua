@@ -5,10 +5,10 @@ local theme = {}
 theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
 --theme.dir             = os.getenv("HOME") .. "/code/awesome-pro/themes/pro-dark"
 
-theme.icons = theme.dir .. '/icons'
+theme.icons = theme.dir .. '/icons/'
 --theme.wallpaper = theme.dir .. '/wallpapers/pro-dark-shadow.png'
 theme.wallpaper = '#161718'
-theme.panel = 'png:' .. theme.icons .. '/tag-list/panel.png'
+theme.panel = 'png:' .. theme.icons .. 'tag-list/panel.png'
 theme.font = 'Roboto medium 10'
 theme.calendar_font = 'Meslo LGS Regular 10'
 theme.fs_font = 'Meslo LGS Regular 10'
@@ -62,15 +62,15 @@ theme.notification_margin = 30
 
 -- Layout
 
-theme.layout_max = theme.icons .. '/layouts/arrow-expand-all.png'
-theme.layout_tile = theme.icons .. '/layouts/view-quilt.png'
+theme.layout_max = theme.icons .. 'layouts/arrow-expand-all.png'
+theme.layout_tile = theme.icons .. 'layouts/view-quilt.png'
 
 -- Taglist
 
-theme.taglist_bg_empty = 'png:' .. theme.icons .. '/tag-list/unselected.png'
-theme.taglist_bg_occupied = 'png:' .. theme.icons .. '/tag-list/unselected.png'
-theme.taglist_bg_urgent = 'png:' .. theme.icons .. '/tag-list/urgent.png'
-theme.taglist_bg_focus = 'png:' .. theme.icons .. '/tag-list/selected.png'
+theme.taglist_bg_empty = 'png:' .. theme.icons .. 'tag-list/unselected.png'
+theme.taglist_bg_occupied = 'png:' .. theme.icons .. 'tag-list/unselected.png'
+theme.taglist_bg_urgent = 'png:' .. theme.icons .. 'tag-list/urgent.png'
+theme.taglist_bg_focus = 'png:' .. theme.icons .. 'tag-list/selected.png'
 
 -- Tasklist
 
@@ -105,65 +105,65 @@ theme.volume =
 )
 -- Widget
 
-theme.widget_display = theme.icons .. '/panel/widgets/display/widget_display.png'
-theme.widget_display_r = theme.icons .. '/panel/widgets/display/widget_display_r.png'
-theme.widget_display_c = theme.icons .. '/panel/widgets/display/widget_display_c.png'
-theme.widget_display_l = theme.icons .. '/panel/widgets/display/widget_display_l.png'
+theme.widget_display = theme.icons .. 'panel/widgets/display/widget_display.png'
+theme.widget_display_r = theme.icons .. 'panel/widgets/display/widget_display_r.png'
+theme.widget_display_c = theme.icons .. 'panel/widgets/display/widget_display_c.png'
+theme.widget_display_l = theme.icons .. 'panel/widgets/display/widget_display_l.png'
 
 -- MPD
 
-theme.mpd_prev = theme.icons .. '/panel/widgets/mpd/mpd_prev.png'
-theme.mpd_nex = theme.icons .. '/panel/widgets/mpd/mpd_next.png'
-theme.mpd_stop = theme.icons .. '/panel/widgets/mpd/mpd_stop.png'
-theme.mpd_pause = theme.icons .. '/panel/widgets/mpd/mpd_pause.png'
-theme.mpd_play = theme.icons .. '/panel/widgets/mpd/mpd_play.png'
-theme.mpd_sepr = theme.icons .. '/panel/widgets/mpd/mpd_sepr.png'
-theme.mpd_sepl = theme.icons .. '/panel/widgets/mpd/mpd_sepl.png'
+theme.mpd_prev = theme.icons .. 'panel/widgets/mpd/mpd_prev.png'
+theme.mpd_nex = theme.icons .. 'panel/widgets/mpd/mpd_next.png'
+theme.mpd_stop = theme.icons .. 'panel/widgets/mpd/mpd_stop.png'
+theme.mpd_pause = theme.icons .. 'panel/widgets/mpd/mpd_pause.png'
+theme.mpd_play = theme.icons .. 'panel/widgets/mpd/mpd_play.png'
+theme.mpd_sepr = theme.icons .. 'panel/widgets/mpd/mpd_sepr.png'
+theme.mpd_sepl = theme.icons .. 'panel/widgets/mpd/mpd_sepl.png'
 
 -- Separators
 
-theme.spr = theme.icons .. '/panel/separators/spr.png'
-theme.sprtr = theme.icons .. '/panel/separators/sprtr.png'
-theme.spr4px = theme.icons .. '/panel/separators/spr4px.png'
-theme.spr5px = theme.icons .. '/panel/separators/spr5px.png'
+theme.spr = theme.icons .. 'panel/separators/spr.png'
+theme.sprtr = theme.icons .. 'panel/separators/sprtr.png'
+theme.spr4px = theme.icons .. 'panel/separators/spr4px.png'
+theme.spr5px = theme.icons .. 'panel/separators/spr5px.png'
 
 -- Clock / Calendar
 
-theme.widget_clock = theme.icons .. '/panel/widgets/widget_clock.png'
-theme.widget_cal = theme.icons .. '/panel/widgets/widget_cal.png'
+theme.widget_clock = theme.icons .. 'panel/widgets/widget_clock.png'
+theme.widget_cal = theme.icons .. 'panel/widgets/widget_cal.png'
 
 -- CPU / TMP
 
-theme.widget_cpu = theme.icons .. '/panel/widgets/widget_cpu.png'
+theme.widget_cpu = theme.icons .. 'panel/widgets/widget_cpu.png'
 -- theme.widget_tmp = theme.icons .. "/panel/widgets/widget_tmp.png"
 
 -- MEM
 
-theme.widget_mem = theme.icons .. '/panel/widgets/widget_mem.png'
+theme.widget_mem = theme.icons .. 'panel/widgets/widget_mem.png'
 
 -- FS
 
-theme.widget_fs = theme.icons .. '/panel/widgets/widget_fs.png'
-theme.widget_fs_hdd = theme.icons .. '/panel/widgets/widget_fs_hdd.png'
+theme.widget_fs = theme.icons .. 'panel/widgets/widget_fs.png'
+theme.widget_fs_hdd = theme.icons .. 'panel/widgets/widget_fs_hdd.png'
 
 -- Mail
 
-theme.widget_mail = theme.icons .. '/panel/widgets/widget_mail.png'
+theme.widget_mail = theme.icons .. 'panel/widgets/widget_mail.png'
 
 -- NET
 
-theme.widget_netdl = theme.icons .. '/panel/widgets/widget_netdl.png'
-theme.widget_netul = theme.icons .. '/panel/widgets/widget_netul.png'
+theme.widget_netdl = theme.icons .. 'panel/widgets/widget_netdl.png'
+theme.widget_netul = theme.icons .. 'panel/widgets/widget_netul.png'
 
 -- Battery
-theme.widget_ac = theme.icons .. '/panel/widgets/battery/ac.png'
-theme.widget_battery = theme.icons .. '/panel/widgets/battery/battery.png'
-theme.widget_battery_low = theme.icons .. '/panel/widgets/battery/battery_low.png'
-theme.widget_battery_empty = theme.icons .. '/panel/widgets/battery/battery_empty.png'
+theme.widget_ac = theme.icons .. 'panel/widgets/battery/ac.png'
+theme.widget_battery = theme.icons .. 'panel/widgets/battery/battery.png'
+theme.widget_battery_low = theme.icons .. 'panel/widgets/battery/battery_low.png'
+theme.widget_battery_empty = theme.icons .. 'panel/widgets/battery/battery_empty.png'
 
 -- Misc
 
-theme.menu_submenu_icon = theme.icons .. '/submenu.png'
+theme.menu_submenu_icon = theme.icons .. 'submenu.png'
 
 theme.home = theme.dir .. '/icons/magnify.png'
 theme.add = theme.dir .. '/icons/plus.png'

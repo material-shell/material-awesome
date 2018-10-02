@@ -4,3 +4,6 @@
 [submodule "freedesktop"]
 	path = freedesktop
 	url = git@github.com:lcpz/awesome-freedesktop.git
+[submodule "radical"]
+	path = radical
+	url = git@github.com:Elv13/radical.git

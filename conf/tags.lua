@@ -33,6 +33,12 @@ local tags = {
         screen = 1
     },
     {
+        icon = 'google-controller.png',
+        type = 'game',
+        defaultApp = '',
+        screen = 1
+    },
+    {
         icon = 'flask.png',
         type = 'any',
         defaultApp = '',
