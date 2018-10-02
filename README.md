@@ -1,4 +1,4 @@
-# Awesome WM 4.x Material themes 
+# Material, Modern and Mouse driven AwesomeWM 4.x theme
 
 ## Description
 A Material Theme for the Awesome window manager, version 4.x.
