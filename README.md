@@ -20,7 +20,7 @@ Fonts are Roboto.
 
 ##### F.A.Q.
 
-Note that Lain, Freedesktop and Scratch added as submodules, for cloning repo you must use command:
+Note that Lain, Freedesktop and Radical added as submodules, for cloning repo you must use command:
 ```
-git clone --recursive https://github.com/4ban/awesome-pro.git
+git clone --recursive https://github.com/PapyElGringo/material-awesome
 ```
