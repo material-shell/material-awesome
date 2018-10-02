@@ -10,17 +10,6 @@ local markup = lain.util.markup
 -- Clock / Calendar
 local textclock = wibox.widget.textclock(markup(clockgf, markup.font('Roboto bold 11', '%H:%M')))
 local clock_widget = wibox.container.margin(textclock, 5, 5, 8, 8)
-lain.widget.calendar(
-    {
-        cal = 'cal --color=always',
-        attach_to = {clock_widget},
-        notification_preset = {
-            font = beautiful.calendar_font,
-            fg = beautiful.fg_normal,
-            bg = beautiful.bg_normal
-        }
-    }
-)
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
 local LeftPanel = function(s)

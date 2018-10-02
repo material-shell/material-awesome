@@ -34,7 +34,7 @@ theme.bat_fg_critical = '#232323'
 theme.bg_normal = theme.appBackground
 theme.bg_focus = '#5a5a5a'
 theme.bg_urgent = '#3F3F3F'
-theme.bg_systray = '#ff0000'
+theme.bg_systray = theme.background
 theme.bat_bg_critical = '#ff0000'
 theme.clockgf = '#ffffff'
 
@@ -62,8 +62,8 @@ theme.notification_margin = 30
 
 -- Layout
 
-theme.layout_max = theme.icons .. '/panel/arrow-expand-all.png'
-theme.layout_tile = theme.icons .. '/panel/view-quilt.png'
+theme.layout_max = theme.icons .. '/layouts/arrow-expand-all.png'
+theme.layout_tile = theme.icons .. '/layouts/view-quilt.png'
 
 -- Taglist
 
