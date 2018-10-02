@@ -5,7 +5,7 @@ A Material Theme for the Awesome window manager, version 4.x.
 
 ## Gallery
 
-![](https://github.com/PapyElGringo/.config/blob/master/awesome/screenshots/tiled.png?raw=true)
+![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/tiled.png?raw=true)
 ---
 
 ![](https://github.com/PapyElGringo/.config/blob/master/awesome/screenshots/tabbed.png?raw=true)
