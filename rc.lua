@@ -391,15 +391,34 @@ _G.client.connect_signal(
 )
 
 -- Hide bars when app go fullscreen
+function updateBarsVisibility()
+    for s in screen do
+        print(s)
+        if s.selected_tag then
+            local fullscreen = s.selected_tag.fullscreenMode
+            -- Order matter here for shadow
+            s.topPanel.visible = not fullscreen
+            if s.leftPanel then
+                s.leftPanel.visible = not fullscreen
+            end
+        end
+    end
+end
+
+_G.tag.connect_signal(
+    'property::selected',
+    function(s)
+        print('toto')
+        updateBarsVisibility()
+    end
+)
+
 _G.client.connect_signal(
     'property::fullscreen',
     function(c)
         local screen = awful.screen.focused()
-        -- Order matter here for shadow
-        awful.screen.focused().topPanel.visible = not c.fullscreen
-        if screen.leftPanel then
-            screen.leftPanel.visible = not c.fullscreen
-        end
+        c.first_tag.fullscreenMode = c.fullscreen
+        updateBarsVisibility()
     end
 )
 

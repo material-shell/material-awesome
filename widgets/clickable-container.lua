@@ -5,11 +5,16 @@ local awful = require('awful')
 
 function build(widget)
     local container = wibox.container.background(widget)
+    local old_cursor, old_wibox
 
     container:connect_signal(
         'mouse::enter',
         function()
             container.bg = '#ffffff11'
+            -- Hm, no idea how to get the wibox from this signal's arguments...
+            local w = _G.mouse.current_wibox
+            old_cursor, old_wibox = w.cursor, w
+            w.cursor = 'hand1'
         end
     )
 
@@ -17,6 +22,10 @@ function build(widget)
         'mouse::leave',
         function()
             container.bg = '#ffffff00'
+            if old_wibox then
+                old_wibox.cursor = old_cursor
+                old_wibox = nil
+            end
         end
     )
 
