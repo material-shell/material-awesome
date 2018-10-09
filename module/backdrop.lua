@@ -64,9 +64,9 @@ local function backdrop(c)
             end
         )
         c:connect_signal(
-            'property::hidden',
+            'property::shape_bounding',
             function(hidden)
-                c.backdrop.visible = not hidden
+                gears.timer.delayed_call(update)
             end
         )
     end
@@ -78,6 +78,7 @@ _G.client.connect_signal(
     'manage',
     function(c)
         if c.type == 'dialog' then
+            log_this('backdrop', 'backdrop')
             backdrop(c)
         end
     end

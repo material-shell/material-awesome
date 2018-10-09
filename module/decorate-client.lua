@@ -42,6 +42,7 @@ end
 _G.client.connect_signal(
     'manage',
     function(c)
+        log_this('decorate-client', 'decorate-client')
         renderClient(c)
         changesOnScreen(c.screen)
     end
