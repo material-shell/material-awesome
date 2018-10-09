@@ -7,7 +7,7 @@ theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
 
 theme.icons = theme.dir .. '/icons/'
 --theme.wallpaper = theme.dir .. '/wallpapers/pro-dark-shadow.png'
-theme.wallpaper = '#161718'
+theme.wallpaper = '#e0e0e0'
 theme.panel = 'png:' .. theme.icons .. 'tag-list/panel.png'
 theme.font = 'Roboto medium 10'
 theme.calendar_font = 'Meslo LGS Regular 10'

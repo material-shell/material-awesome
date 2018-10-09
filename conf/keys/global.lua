@@ -299,7 +299,7 @@ local globalKeys =
         {modkey},
         '`',
         function()
-            awful.screen.focused().quake:toggle()
+            awful.spawn('tdrop -a alacritty')
         end,
         {description = 'dropdown application', group = 'launcher'}
     ),
