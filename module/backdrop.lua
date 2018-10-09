@@ -23,9 +23,8 @@ local function update_backdrop(w, c)
     -- Remove the shape of the client
     local c_geo = c:geometry()
     local c_shape = gears.surface(c.shape_bounding)
-
     cr:set_source_rgba(0, 0, 0, 0)
-    cr:mask_surface(c_shape, c_geo.x + c.border_width, c_geo.y + c.border_width)
+    cr:mask_surface(c_shape, c_geo.x + c.border_width - geo.x, c_geo.y + c.border_width - geo.y)
     c_shape:finish()
 
     w.shape_bounding = shape._native

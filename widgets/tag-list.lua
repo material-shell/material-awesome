@@ -3,7 +3,7 @@ local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
 local capi = {button = _G.button}
 local clickable_container = require('widgets.clickable-container')
-
+local modkey = require('conf.keys.mod').modKey
 --- Common method to create buttons.
 -- @tab buttons
 -- @param object
@@ -126,6 +126,7 @@ local TagList = function(s)
                 function(t)
                     if _G.client.focus then
                         _G.client.focus:move_to_tag(t)
+                        t:view_only()
                     end
                 end
             ),
