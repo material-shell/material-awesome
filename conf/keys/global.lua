@@ -105,7 +105,7 @@ local globalKeys =
         {modkey},
         'e',
         function()
-            awful.spawn('rofi -show drun')
+            awful.spawn(apps.rofi)
         end,
         {description = 'show main menu', group = 'awesome'}
     ),

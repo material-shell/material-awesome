@@ -110,50 +110,12 @@ theme.widget_display_r = theme.icons .. 'panel/widgets/display/widget_display_r.
 theme.widget_display_c = theme.icons .. 'panel/widgets/display/widget_display_c.png'
 theme.widget_display_l = theme.icons .. 'panel/widgets/display/widget_display_l.png'
 
--- MPD
-
-theme.mpd_prev = theme.icons .. 'panel/widgets/mpd/mpd_prev.png'
-theme.mpd_nex = theme.icons .. 'panel/widgets/mpd/mpd_next.png'
-theme.mpd_stop = theme.icons .. 'panel/widgets/mpd/mpd_stop.png'
-theme.mpd_pause = theme.icons .. 'panel/widgets/mpd/mpd_pause.png'
-theme.mpd_play = theme.icons .. 'panel/widgets/mpd/mpd_play.png'
-theme.mpd_sepr = theme.icons .. 'panel/widgets/mpd/mpd_sepr.png'
-theme.mpd_sepl = theme.icons .. 'panel/widgets/mpd/mpd_sepl.png'
-
 -- Separators
 
 theme.spr = theme.icons .. 'panel/separators/spr.png'
 theme.sprtr = theme.icons .. 'panel/separators/sprtr.png'
 theme.spr4px = theme.icons .. 'panel/separators/spr4px.png'
 theme.spr5px = theme.icons .. 'panel/separators/spr5px.png'
-
--- Clock / Calendar
-
-theme.widget_clock = theme.icons .. 'panel/widgets/widget_clock.png'
-theme.widget_cal = theme.icons .. 'panel/widgets/widget_cal.png'
-
--- CPU / TMP
-
-theme.widget_cpu = theme.icons .. 'panel/widgets/widget_cpu.png'
--- theme.widget_tmp = theme.icons .. "/panel/widgets/widget_tmp.png"
-
--- MEM
-
-theme.widget_mem = theme.icons .. 'panel/widgets/widget_mem.png'
-
--- FS
-
-theme.widget_fs = theme.icons .. 'panel/widgets/widget_fs.png'
-theme.widget_fs_hdd = theme.icons .. 'panel/widgets/widget_fs_hdd.png'
-
--- Mail
-
-theme.widget_mail = theme.icons .. 'panel/widgets/widget_mail.png'
-
--- NET
-
-theme.widget_netdl = theme.icons .. 'panel/widgets/widget_netdl.png'
-theme.widget_netul = theme.icons .. 'panel/widgets/widget_netul.png'
 
 -- Battery
 theme.widget_ac = theme.icons .. 'panel/widgets/battery/ac.png'
@@ -167,32 +129,5 @@ theme.menu_submenu_icon = theme.icons .. 'submenu.png'
 
 theme.home = theme.dir .. '/icons/magnify.png'
 theme.add = theme.dir .. '/icons/plus.png'
--- Titlebar
-theme.titlebar_close_button_focus = theme.dir .. '/icons/titlebar/close_focus.png'
-theme.titlebar_close_button_normal = theme.dir .. '/icons/titlebar/close_normal.png'
-
-theme.titlebar_ontop_button_focus_active = theme.dir .. '/icons/titlebar/ontop_focus_active.png'
-theme.titlebar_ontop_button_normal_active = theme.dir .. '/icons/titlebar/ontop_normal_active.png'
-
-theme.titlebar_ontop_button_focus_inactive = theme.dir .. '/icons/titlebar/ontop_focus_inactive.svg'
-theme.titlebar_ontop_button_normal_inactive = theme.dir .. '/icons/titlebar/ontop_normal_inactive.svg'
-
-theme.titlebar_sticky_button_focus_active = theme.dir .. '/icons/titlebar/sticky_focus_active.svg'
-theme.titlebar_sticky_button_normal_active = theme.dir .. '/icons/titlebar/sticky_normal_active.svg'
-
-theme.titlebar_sticky_button_focus_inactive = theme.dir .. '/icons/titlebar/sticky_focus_inactive.svg'
-theme.titlebar_sticky_button_normal_inactive = theme.dir .. '/icons/titlebar/sticky_normal_inactive.svg'
-
-theme.titlebar_floating_button_focus_active = theme.dir .. '/icons/titlebar/floating_focus_active.svg'
-theme.titlebar_floating_button_normal_active = theme.dir .. '/icons/titlebar/floating_normal_active.svg'
-
-theme.titlebar_floating_button_focus_inactive = theme.dir .. '/icons/titlebar/floating_focus_inactive.svg'
-theme.titlebar_floating_button_normal_inactive = theme.dir .. '/icons/titlebar/floating_normal_inactive.svg'
-
-theme.titlebar_maximized_button_focus_active = theme.dir .. '/icons/titlebar/maximized_focus_active.png'
-theme.titlebar_maximized_button_normal_active = theme.dir .. '/icons/titlebar/maximized_normal_active.png'
-
-theme.titlebar_maximized_button_focus_inactive = theme.dir .. '/icons/titlebar/maximized_focus_inactive.png'
-theme.titlebar_maximized_button_normal_inactive = theme.dir .. '/icons/titlebar/maximized_normal_inactive.png'
 
 return theme

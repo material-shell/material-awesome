@@ -1,6 +1,7 @@
 local wibox = require('wibox')
 local gears = require('gears')
 local awful = require('awful')
+local beautiful = require('beautiful')
 
 local function update_backdrop(w, c)
     local cairo = require('lgi').cairo
@@ -37,7 +38,7 @@ local function backdrop(c)
         update_backdrop(c.backdrop, c)
     end
     if not c.backdrop then
-        c.backdrop = wibox {ontop = true, bg = '#00000099', type = 'splash'}
+        c.backdrop = wibox {ontop = true, bg = '#00000054', type = 'splash'}
         c.backdrop:buttons(
             awful.util.table.join(
                 awful.button(

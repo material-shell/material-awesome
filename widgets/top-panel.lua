@@ -7,6 +7,8 @@ local gears = require('gears')
 local lain = require('lain')
 local clickable_container = require('widgets.clickable-container')
 local mat_icon_button = require('widgets.mat-icon-button')
+local apps = require('conf.apps')
+
 -- home_button
 local searchIcon = wibox.widget.imagebox()
 searchIcon.image = beautiful.home
@@ -22,7 +24,7 @@ home_button:buttons(
             1,
             nil,
             function()
-                awful.spawn('rofi -show drun')
+                awful.spawn(apps.rofi)
             end
         )
     )
