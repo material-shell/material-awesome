@@ -77,7 +77,7 @@ end
 _G.client.connect_signal(
     'manage',
     function(c)
-        if c.type == 'dialog' then
+        if c.drawBackdrop == true then
             backdrop(c)
         end
     end

@@ -14,9 +14,10 @@ end
 
 -- entries must be comma-separated
 run_once({'wmname LG3D'}) -- Fix java problem
-run_once({'nm-applet'}) -- Network manager tray icon
+--run_once({'nm-applet'}) -- Network manager tray icon
 run_once({'pa-applet'}) -- Sound manager tray icon
-run_once({'xfce4-power-manager'}) -- Sound manager tray icon
+run_once({'blueberry-tray'}) -- Sound manager tray icon
+--run_once({'xfce4-power-manager'}) -- Sound manager tray icon
 run_once({'compton -b --config ' .. filesystem.get_configuration_dir() .. '/conf/compton.conf'})
 -- To allow gnome tools to ask authentication like pamac
 run_once(

@@ -4,7 +4,7 @@ local beautiful = require('beautiful')
 
 local function renderClient(client)
     local only_child = clientsCount == 1
-    if client.screen.clientMode == 'maximized' and client.type ~= 'dialog' then
+    if client.screen.clientMode == 'maximized' and (client.type ~= 'dialog' and client.floating == false) then
         client.border_width = 0
         client.shape = function(cr, w, h)
             gears.shape.rectangle(cr, w, h)
@@ -22,7 +22,7 @@ local function changesOnScreen(currentScreen)
     local clientsCount = 0
 
     for i, client in pairs(currentScreen.clients) do
-        if client.type ~= 'dialog' then
+        if client.type ~= 'dialog' and client.floating == false then
             clientsCount = clientsCount + 1
         end
     end

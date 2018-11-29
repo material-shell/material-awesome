@@ -14,6 +14,7 @@ awful.rules.rules = {
             border_color = beautiful.border_normal,
             focus = awful.client.focus.filter,
             raise = true,
+            maximized = false,
             keys = client_keys,
             buttons = client_buttons,
             screen = awful.screen.preferred,
@@ -24,11 +25,13 @@ awful.rules.rules = {
     },
     -- Titlebars
     {
-        rule_any = {type = {'dialog'}},
+        rule_any = {type = {'dialog'}, class = {'Wicd-client.py'}},
         properties = {
             placement = awful.placement.centered,
             sticky = true,
-            ontop = true
+            ontop = true,
+            floating = true,
+            drawBackdrop = true
         }
     },
     {

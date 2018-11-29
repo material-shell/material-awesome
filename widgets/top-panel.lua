@@ -1,6 +1,5 @@
 local awful = require('awful')
 local beautiful = require('beautiful')
-beautiful.init(require('theme'))
 local wibox = require('wibox')
 local TaskList = require('widgets.task-list')
 local gears = require('gears')
@@ -89,7 +88,6 @@ local LayoutBox = function(s)
     )
     return layoutBox
 end
-local volume = beautiful.volume
 
 local TopPanel = function(s)
     local panel =
@@ -99,7 +97,7 @@ local TopPanel = function(s)
             ontop = true,
             screen = s,
             height = 48,
-            bg = beautiful.background,
+            bg = beautiful.panel_bg,
             fg = beautiful.fg_normal
         }
     )
@@ -116,7 +114,6 @@ local TopPanel = function(s)
         nil,
         {
             layout = wibox.layout.fixed.horizontal,
-            volume.widget,
             -- Layout box
             LayoutBox(s)
         }

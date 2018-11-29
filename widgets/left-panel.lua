@@ -1,7 +1,6 @@
 local awful = require('awful')
 local lain = require('lain')
 local beautiful = require('beautiful')
-beautiful.init(require('theme'))
 local wibox = require('wibox')
 local TagList = require('widgets.tag-list')
 local mat_icon_button = require('widgets.mat-icon-button')
@@ -62,7 +61,7 @@ local LeftPanel = function(s)
             screen = s,
             width = 48,
             ontop = true,
-            bg = beautiful.panel,
+            bg = beautiful.panel_bg,
             fg = beautiful.fg_normal
         }
     )
@@ -81,6 +80,8 @@ local LeftPanel = function(s)
             -- Right widgets
             layout = wibox.layout.fixed.vertical,
             wibox.container.margin(systray, 10, 10),
+            require('widgets.wifi'),
+            require('widgets.battery'),
             -- Clock
             clock_widget,
             system_button

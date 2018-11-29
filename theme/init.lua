@@ -23,6 +23,8 @@ theme.accent_hue_800 = '#00345f'
 
 theme.appBackground = '#212121'
 theme.background = '#192933'
+theme.panel_bg = '#192933'
+
 theme.background_hue_800 = '#151515'
 
 theme.fg_normal = '#ffffffde'
