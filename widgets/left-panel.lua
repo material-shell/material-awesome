@@ -3,19 +3,17 @@ local lain = require('lain')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local TagList = require('widgets.tag-list')
-local mat_icon_button = require('widgets.mat-icon-button')
-local radical = require('radical')
-
+local gears = require('gears')
 local clockgf = beautiful.clockgf
 local markup = lain.util.markup
 -- Clock / Calendar
-local textclock = wibox.widget.textclock(markup(clockgf, markup.font('Roboto bold 11', '%H:%M')))
-local clock_widget = wibox.container.margin(textclock, 5, 5, 8, 4)
+local textclock = wibox.widget.textclock(markup(clockgf, markup.font('Roboto Mono bold 11', '%H\n%M')))
+local clock_widget = wibox.container.margin(textclock, 13, 13, 4, 0)
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
 
-local system_button = mat_icon_button(wibox.widget.imagebox(beautiful.icons .. 'settings.png'))
-local system_menu =
+local system_button = require('widgets.power-menu')
+--[[ local system_menu =
     radical.context {
     style = radical.style.classic,
     layout = radical.layout.horizontal,
@@ -50,9 +48,7 @@ system_menu:add_item {
     button1 = function()
         awful.spawn('shutdown 0')
     end
-}
-
-system_button:set_menu(system_menu, 'button::pressed', 1)
+} ]]
 local LeftPanel = function(s)
     local panel =
         awful.wibar(
@@ -80,6 +76,7 @@ local LeftPanel = function(s)
             -- Right widgets
             layout = wibox.layout.fixed.vertical,
             wibox.container.margin(systray, 10, 10),
+            require('widgets.package-updater'),
             require('widgets.wifi'),
             require('widgets.battery'),
             -- Clock

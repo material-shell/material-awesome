@@ -13,11 +13,12 @@ local function run_once(cmd_arr)
 end
 
 -- entries must be comma-separated
+run_once({'autorandr --change'})
 run_once({'wmname LG3D'}) -- Fix java problem
 --run_once({'nm-applet'}) -- Network manager tray icon
 run_once({'pa-applet'}) -- Sound manager tray icon
 run_once({'blueberry-tray'}) -- Sound manager tray icon
---run_once({'xfce4-power-manager'}) -- Sound manager tray icon
+run_once({'xfce4-power-manager'}) -- Sound manager tray icon
 run_once({'compton -b --config ' .. filesystem.get_configuration_dir() .. '/conf/compton.conf'})
 -- To allow gnome tools to ask authentication like pamac
 run_once(
@@ -25,4 +26,4 @@ run_once(
         '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)'
     }
 )
-run_once({'pamac-tray'})
+-- run_once({'pamac-tray'})

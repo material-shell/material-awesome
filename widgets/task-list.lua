@@ -111,6 +111,11 @@ local function list_update(w, buttons, label, data, objects)
         if text == nil or text == '' then
             tbm:set_margins(0)
         else
+            -- truncate when title is too long
+            local textOnly = text:match('>(.-)<')
+            if (textOnly:len() > 24) then
+                text = text:gsub('>(.-)<', '>' .. textOnly:sub(1, 21) .. '...<')
+            end
             if not tb:set_markup_silently(text) then
                 tb:set_markup('<i>&lt;Invalid text&gt;</i>')
             end

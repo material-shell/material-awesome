@@ -19,10 +19,9 @@ local gears = require('gears')
 -- Battery 0: Charging, 53%, 00:57:43 until charged
 
 local HOME = os.getenv('HOME')
-local PATH_TO_ICONS = HOME .. '/.config/awesome/widgets/wifi/icons/'
-local interface = 'wlp2s0'
-local connected = false
-local essid = 'N/A'
+local PATH_TO_ICONS = HOME .. '/.config/awesome/widgets/package-updater/icons/'
+local updateAvailable = false
+local numOfUpdatesAvailable
 
 local widget =
     wibox.widget {
@@ -42,7 +41,11 @@ widget_button:buttons(
             1,
             nil,
             function()
-                awful.spawn('wicd-client -n')
+                if updateAvailable then
+                    awful.spawn('pamac-manager --updates')
+                else
+                    awful.spawn('pamac-manager')
+                end
             end
         )
     )
@@ -55,10 +58,10 @@ local widget_popup =
         mode = 'outside',
         align = 'right',
         timer_function = function()
-            if connected then
-                return 'Connected to ' .. essid
+            if updateAvailable then
+                return numOfUpdatesAvailable .. ' updates are available'
             else
-                return 'Wireless network is disconnected'
+                return 'We are up-to-date!'
             end
         end,
         preferred_positions = {'right', 'left', 'top', 'bottom'}
@@ -87,25 +90,19 @@ end
 
 local last_battery_check = os.time()
 watch(
-    "awk 'NR==3 {printf \"%3.0f\" ,($3/70)*100}' /proc/net/wireless",
-    5,
+    'pamac checkupdates',
+    60,
     function(widget, stdout, stderr, exitreason, exitcode)
-        local widgetIconName = 'wifi-strength'
-        local wifi_strength = tonumber(stdout)
-        if (wifi_strength ~= nil) then
-            connected = true
-            --log_this(status)
-            -- Update popup text
-            local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
-            widgetIconName = widgetIconName .. '-' .. wifi_strength_rounded
-            widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
+        numOfUpdatesAvailable = tonumber(stdout:match('.-\n'):match('%d*'))
+        local widgetIconName
+        if (numOfUpdatesAvailable ~= nil) then
+            updateAvailable = true
+            widgetIconName = 'package-up'
         else
-            connect = false
-            widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '-off' .. '.svg')
+            updateAvailable = false
+            widgetIconName = 'package'
         end
-        if (connected and (essid == 'N/A' or essid == nil)) then
-            grabText()
-        end
+        widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
     end,
     widget
 )
@@ -114,10 +111,13 @@ local function grabText()
         awful.spawn.easy_async(
             'iw dev ' .. interface .. ' link',
             function(stdout, stderr, reason, exit_code)
-                essid = stdout:match('SSID:(.-)\n')
-                if (essid == nil) then
-                    essid = 'N/A'
-                end
+                string.gsub(
+                    stdout,
+                    'SSID:(.-)\n',
+                    function(r)
+                        essid = r
+                    end
+                )
             end
         )
     end

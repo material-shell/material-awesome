@@ -10,6 +10,7 @@ theme.icons = theme.dir .. '/icons/'
 theme.wallpaper = '#e0e0e0'
 theme.panel = 'png:' .. theme.icons .. 'tag-list/panel.png'
 theme.font = 'Roboto medium 10'
+theme.title_font = 'Roboto medium 14'
 theme.calendar_font = 'Meslo LGS Regular 10'
 theme.fs_font = 'Meslo LGS Regular 10'
 

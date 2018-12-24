@@ -103,9 +103,6 @@ watch(
             connect = false
             widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '-off' .. '.svg')
         end
-        if (connected and (essid == 'N/A' or essid == nil)) then
-            grabText()
-        end
     end,
     widget
 )
@@ -114,10 +111,13 @@ local function grabText()
         awful.spawn.easy_async(
             'iw dev ' .. interface .. ' link',
             function(stdout, stderr, reason, exit_code)
-                essid = stdout:match('SSID:(.-)\n')
-                if (essid == nil) then
-                    essid = 'N/A'
-                end
+                string.gsub(
+                    stdout,
+                    'SSID:(.-)\n',
+                    function(r)
+                        essid = r
+                    end
+                )
             end
         )
     end

@@ -25,31 +25,6 @@ local clientKeys =
             c:kill()
         end,
         {description = 'close', group = 'client'}
-    ),
-    awful.key({altkey}, 'space', awful.client.floating.toggle, {description = 'toggle floating', group = 'client'}),
-    awful.key(
-        {modkey, 'Control'},
-        'Return',
-        function(c)
-            c:swap(awful.client.getmaster())
-        end,
-        {description = 'move to master', group = 'client'}
-    ),
-    awful.key(
-        {modkey},
-        'o',
-        function(c)
-            c:move_to_screen()
-        end,
-        {description = 'move to screen', group = 'client'}
-    ),
-    awful.key(
-        {modkey},
-        'y',
-        function(c)
-            c.ontop = not c.ontop
-        end,
-        {description = 'toggle keep on top', group = 'client'}
     )
 )
 

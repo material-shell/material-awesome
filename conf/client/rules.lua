@@ -15,20 +15,22 @@ awful.rules.rules = {
             focus = awful.client.focus.filter,
             raise = true,
             maximized = false,
+            maximized_horizontal = false,
+            maximized_vertical = false,
+            sticky = false,
             keys = client_keys,
             buttons = client_buttons,
             screen = awful.screen.preferred,
-            placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+            placement = awful.placement.no_offscreen,
             size_hints_honor = false,
             fullscreen = false
         }
     },
     -- Titlebars
     {
-        rule_any = {type = {'dialog'}, class = {'Wicd-client.py'}},
+        rule_any = {type = {'dialog'}, class = {'Wicd-client.py', 'calendar.google.com'}},
         properties = {
             placement = awful.placement.centered,
-            sticky = true,
             ontop = true,
             floating = true,
             drawBackdrop = true

@@ -121,48 +121,6 @@ local globalKeys =
         end,
         {description = 'go back', group = 'client'}
     ),
-    -- Show/Hide Wibox
-    awful.key(
-        {modkey},
-        'b',
-        function()
-            for s in _G.screen do
-                s.mywibox.visible = not s.mywibox.visible
-                if s.mybottomwibox then
-                    s.mybottomwibox.visible = not s.mybottomwibox.visible
-                end
-            end
-        end,
-        {description = 'toggle wibox', group = 'awesome'}
-    ),
-    -- On the fly useless gaps change
-    awful.key(
-        {altkey},
-        'Right',
-        function()
-            lain.util.useless_gaps_resize(7)
-        end,
-        {description = 'increment useless gaps', group = 'tag'}
-    ),
-    awful.key(
-        {altkey},
-        'Left',
-        function()
-            lain.util.useless_gaps_resize(-7)
-        end,
-        {description = 'decrement useless gaps', group = 'tag'}
-    ),
-    -- Dynamic tagging
-    -- awful.key({ modkey, "Shift" }, "n", function () lain.util.add_tag() end,
-    --           {description = "add new tag", group = "tag"}),
-    -- awful.key({ modkey, "Shift" }, "r", function () lain.util.rename_tag() end,
-    --           {description = "rename tag", group = "tag"}),
-    -- awful.key({ modkey, "Shift" }, "Left", function () lain.util.move_tag(-1) end,
-    --           {description = "move tag to the left", group = "tag"}),
-    -- awful.key({ modkey, "Shift" }, "Right", function () lain.util.move_tag(1) end,
-    --           {description = "move tag to the right", group = "tag"}),
-    -- awful.key({ modkey, "Shift" }, "d", function () lain.util.delete_tag() end,
-    --           {description = "delete tag", group = "tag"}),
     -- Programms
     awful.key(
         {},
