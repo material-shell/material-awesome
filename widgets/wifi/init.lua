@@ -61,7 +61,9 @@ local widget_popup =
                 return 'Wireless network is disconnected'
             end
         end,
-        preferred_positions = {'right', 'left', 'top', 'bottom'}
+        preferred_positions = {'right', 'left', 'top', 'bottom'},
+        margin_leftright = 8,
+        margin_topbottom = 8
     }
 )
 
@@ -83,6 +85,20 @@ local function show_battery_warning()
         fg = '#EEE9EF',
         width = 248
     }
+end
+
+local function grabText()
+    if connected then
+        awful.spawn.easy_async(
+            'iw dev ' .. interface .. ' link',
+            function(stdout, stderr, reason, exit_code)
+                essid = stdout:match('SSID:(.-)\n')
+                if (essid == nil) then
+                    essid = 'N/A'
+                end
+            end
+        )
+    end
 end
 
 local last_battery_check = os.time()
@@ -109,19 +125,6 @@ watch(
     end,
     widget
 )
-local function grabText()
-    if connected then
-        awful.spawn.easy_async(
-            'iw dev ' .. interface .. ' link',
-            function(stdout, stderr, reason, exit_code)
-                essid = stdout:match('SSID:(.-)\n')
-                if (essid == nil) then
-                    essid = 'N/A'
-                end
-            end
-        )
-    end
-end
 
 widget:connect_signal(
     'mouse::enter',

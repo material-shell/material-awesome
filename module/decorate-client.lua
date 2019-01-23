@@ -42,6 +42,7 @@ end
 _G.client.connect_signal(
     'manage',
     function(c)
+        -- log_this(tostring(c.window))
         renderClient(c)
         changesOnScreen(c.screen)
     end

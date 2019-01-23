@@ -4,7 +4,11 @@ local debug = require('gears.debug')
 local awful = require('awful')
 
 function build(widget)
-    local container = wibox.container.background(widget)
+    local container =
+        wibox.widget {
+        widget,
+        widget = wibox.container.background
+    }
     local old_cursor, old_wibox
 
     container:connect_signal(

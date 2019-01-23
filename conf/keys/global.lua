@@ -290,7 +290,7 @@ local globalKeys =
         end,
         {description = 'show weather', group = 'widgets'}
     ),
-    --[[     -- Brightness
+    -- Brightness
     awful.key(
         {},
         'XF86MonBrightnessUp',
@@ -306,14 +306,13 @@ local globalKeys =
             awful.spawn('xbacklight -dec 10')
         end,
         {description = '-10%', group = 'hotkeys'}
-    ), ]]
+    ),
     -- ALSA volume control
     awful.key(
         {},
         'XF86AudioRaiseVolume',
         function()
-            os.execute(string.format('amixer -q set %s 5%%+', beautiful.volume.channel))
-            beautiful.volume.update()
+            awful.spawn('amixer -D pulse sset Master 5%+')
         end,
         {description = 'volume up', group = 'hotkeys'}
     ),
@@ -321,8 +320,7 @@ local globalKeys =
         {},
         'XF86AudioLowerVolume',
         function()
-            os.execute(string.format('amixer -q set %s 5%%-', beautiful.volume.channel))
-            beautiful.volume.update()
+            awful.spawn('amixer -D pulse sset Master 5%-')
         end,
         {description = 'volume down', group = 'hotkeys'}
     ),
@@ -330,10 +328,15 @@ local globalKeys =
         {},
         'XF86AudioMute',
         function()
-            os.execute(
-                string.format('amixer -q set %s toggle', beautiful.volume.togglechannel or beautiful.volume.channel)
-            )
-            beautiful.volume.update()
+            awful.spawn('amixer -D pulse set Master 1+ toggle')
+        end,
+        {description = 'toggle mute', group = 'hotkeys'}
+    ),
+    awful.key(
+        {},
+        'XF86AudioNext',
+        function()
+            log_this('yolo')
         end,
         {description = 'toggle mute', group = 'hotkeys'}
     ),

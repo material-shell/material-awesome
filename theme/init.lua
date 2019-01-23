@@ -26,7 +26,7 @@ theme.appBackground = '#212121'
 theme.background = '#192933'
 theme.panel_bg = '#192933'
 
-theme.background_hue_800 = '#151515'
+theme.background_hue_800 = '#121e25'
 
 theme.fg_normal = '#ffffffde'
 
@@ -59,9 +59,17 @@ theme.notification_bg = '#232323'
 theme.notification_fg = '#e4e4e4'
 theme.notification_border_width = 0
 theme.notification_border_color = '#232323'
-theme.notification_shape = gears.shape.rounded
+theme.notification_shape = gears.shape.rounded_rect
 theme.notification_opacity = 1
 theme.notification_margin = 30
+
+-- Tooltips
+theme.tooltip_bg = '#232323'
+--theme.tooltip_border_color = '#232323'
+theme.tooltip_border_width = 0
+theme.tooltip_shape = function(cr, w, h)
+    gears.shape.rounded_rect(cr, w, h, 6)
+end
 
 -- Layout
 
@@ -87,50 +95,10 @@ theme.tasklist_fg_focus = '#DDDDDD'
 theme.tasklist_fg_urgent = theme.fg_normal
 theme.tasklist_fg_normal = '#AAAAAA'
 
--- ALSA volume
-theme.volume =
-    lain.widget.alsa(
-    {
-        --togglechannel = "IEC958,3",
-        settings = function()
-            header = ' Vol '
-            vlevel = volume_now.level
-
-            if volume_now.status == 'off' then
-                vlevel = vlevel .. 'M '
-            else
-                vlevel = vlevel .. ' '
-            end
-
-            widget:set_markup(markup.font(theme.font, markup('#9E9C9A', header) .. vlevel))
-        end
-    }
-)
--- Widget
-
-theme.widget_display = theme.icons .. 'panel/widgets/display/widget_display.png'
-theme.widget_display_r = theme.icons .. 'panel/widgets/display/widget_display_r.png'
-theme.widget_display_c = theme.icons .. 'panel/widgets/display/widget_display_c.png'
-theme.widget_display_l = theme.icons .. 'panel/widgets/display/widget_display_l.png'
-
--- Separators
-
-theme.spr = theme.icons .. 'panel/separators/spr.png'
-theme.sprtr = theme.icons .. 'panel/separators/sprtr.png'
-theme.spr4px = theme.icons .. 'panel/separators/spr4px.png'
-theme.spr5px = theme.icons .. 'panel/separators/spr5px.png'
-
--- Battery
-theme.widget_ac = theme.icons .. 'panel/widgets/battery/ac.png'
-theme.widget_battery = theme.icons .. 'panel/widgets/battery/battery.png'
-theme.widget_battery_low = theme.icons .. 'panel/widgets/battery/battery_low.png'
-theme.widget_battery_empty = theme.icons .. 'panel/widgets/battery/battery_empty.png'
-
 -- Misc
-
-theme.menu_submenu_icon = theme.icons .. 'submenu.png'
 
 theme.home = theme.dir .. '/icons/magnify.png'
 theme.add = theme.dir .. '/icons/plus.png'
 
+theme.icon_theme = 'Papirus-Dark'
 return theme

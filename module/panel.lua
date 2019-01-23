@@ -6,12 +6,12 @@ local TopPanel = require('widgets.top-panel')
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(
     function(s)
-        -- Create the Top bar
-        s.topPanel = TopPanel(s)
         if s.index == 1 then
             -- Create the leftPanel
             s.leftPanel = LeftPanel(s)
         end
+        -- Create the Top bar
+        s.topPanel = TopPanel(s)
     end
 )
 
