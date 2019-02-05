@@ -15,6 +15,7 @@ require('module.backdrop')
 require('module.panel')
 require('module.menu')
 require('module.exit-screen')
+
 -- Setup all configurations
 require('conf.client')
 require('conf.tags')

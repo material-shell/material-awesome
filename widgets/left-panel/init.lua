@@ -1,12 +1,12 @@
 local awful = require('awful')
-local lain = require('lain')
+local lain = require('lain.init')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local TagList = require('widgets.tag-list')
 local gears = require('gears')
 local apps = require('conf.apps')
 local list_icon_item = require('widgets.list-icon-item')
-local clockgf = beautiful.clockgf
+local clockgf = beautiful.fg_normal
 local markup = lain.util.markup
 -- Clock / Calendar
 local textclock = wibox.widget.textclock(markup(clockgf, markup.font('Roboto Mono bold 11', '%H\n%M')))
@@ -14,9 +14,7 @@ local clock_widget = wibox.container.margin(textclock, 13, 13, 8, 8)
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
 local clickable_container = require('widgets.clickable-container')
-local mat_slider = require('widgets.mat-slider')
 local icons = require('theme.icons')
-local system_button = require('widgets.power-menu')
 
 local menu_icon =
   wibox.widget {
@@ -24,7 +22,7 @@ local menu_icon =
   widget = wibox.widget.imagebox
 }
 
-home_button =
+local home_button =
   wibox.widget {
   wibox.widget {
     wibox.widget {
@@ -37,37 +35,25 @@ home_button =
     },
     widget = clickable_container
   },
-  bg = beautiful.primary,
+  bg = beautiful.primary.hue_500,
   widget = wibox.container.background
 }
-local searchPlaceholder = require('widgets.left-panel.search-button')
 
-searchPlaceholder:buttons(
-  awful.util.table.join(
-    awful.button(
-      {},
-      1,
-      function()
-        awful.spawn(apps.rofi)
-      end
-    )
-  )
-)
-local mat_list_item = require('widgets.mat-list-item')
-
-local LeftPanel = function(s)
-  local panelOpened = false
+local LeftPanel =
+  function(s)
   local panel =
     wibox {
     screen = s,
     width = 448,
     height = s.geometry.height,
-    x = 48 - 448,
-    y = 0,
+    x = s.geometry.x + 48 - 448,
+    y = s.geometry.y,
     ontop = true,
-    bg = beautiful.panel_bg,
+    bg = beautiful.background.hue_800,
     fg = beautiful.fg_normal
   }
+
+  panel.opened = false
 
   panel:struts(
     {
@@ -87,12 +73,32 @@ local LeftPanel = function(s)
     height = s.geometry.height
   }
 
-  local openPanel = function()
+  local run_rofi =
+    function()
+    -- panel.rofi_pid = awful.spawn(apps.rofi)
+    --log_this(panel.rofi_pid)
+    awesome.spawn(
+      apps.rofi,
+      false,
+      false,
+      false,
+      false,
+      function()
+        panel:toggle()
+      end
+    )
+    --awful.spawn.with_line_callback(apps.rofi, { exit = function() print("rofi exited") end })
+  end
+
+  local openPanel = function(should_run_rofi)
     panel.x = 0
     menu_icon.image = icons.close
     backdrop.visible = true
     panel.visible = false
     panel.visible = true
+    if should_run_rofi then
+      run_rofi()
+    end
   end
 
   local closePanel = function()
@@ -101,10 +107,10 @@ local LeftPanel = function(s)
     backdrop.visible = false
   end
 
-  local togglePanel = function()
-    panelOpened = not panelOpened
-    if (panelOpened) then
-      openPanel()
+  function panel:toggle(should_run_rofi)
+    self.opened = not self.opened
+    if self.opened then
+      openPanel(should_run_rofi)
     else
       closePanel()
     end
@@ -116,7 +122,7 @@ local LeftPanel = function(s)
         {},
         1,
         function()
-          togglePanel()
+          panel:toggle()
         end
       )
     )
@@ -129,7 +135,7 @@ local LeftPanel = function(s)
         1,
         nil,
         function()
-          togglePanel()
+          panel:toggle()
           --awful.spawn(apps.rofi)
         end
       )
@@ -150,11 +156,11 @@ local LeftPanel = function(s)
                 icon = icons.search,
                 text = 'Search Applications',
                 callback = function()
-                  awful.spawn(apps.rofi)
+                  run_rofi()
                 end
               }
             ),
-            bg = beautiful.background,
+            bg = beautiful.background.hue_800,
             widget = wibox.container.background
           },
           wibox.widget {
@@ -176,17 +182,17 @@ local LeftPanel = function(s)
                 text = 'End work session',
                 divider = true,
                 callback = function()
-                  togglePanel()
+                  panel:toggle()
                   exit_screen_show()
                 end
               }
             ),
-            bg = '#081b20',
+            bg = beautiful.background.hue_800,
             widget = wibox.container.background
           }
         }
       },
-      bg = '#121e25',
+      bg = beautiful.background.hue_900,
       widget = wibox.container.background
     },
     {

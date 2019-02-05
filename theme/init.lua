@@ -1,104 +1,12 @@
-local gears = require('gears')
-local lain = require('lain')
-local markup = require('lain.util.markup')
-local theme = {}
-theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
---theme.dir             = os.getenv("HOME") .. "/code/awesome-pro/themes/pro-dark"
+local gtable = require('gears.table')
+local default_theme = require('theme.default-theme')
+-- PICK THEME HERE
+local theme = require('theme.my-theme')
 
-theme.icons = theme.dir .. '/icons/'
---theme.wallpaper = theme.dir .. '/wallpapers/pro-dark-shadow.png'
-theme.wallpaper = '#e0e0e0'
-theme.panel = 'png:' .. theme.icons .. 'tag-list/panel.png'
-theme.font = 'Roboto medium 10'
-theme.title_font = 'Roboto medium 14'
-theme.calendar_font = 'Meslo LGS Regular 10'
-theme.fs_font = 'Meslo LGS Regular 10'
+local final_theme = {}
+gtable.crush(final_theme, default_theme.theme)
+gtable.crush(final_theme, theme.theme)
+default_theme.awesome_overrides(final_theme)
+theme.awesome_overrides(final_theme)
 
-theme.primary = '#003f6b'
-theme.primary_hue_300 = '#174a78'
-theme.primary_hue_800 = '#00345f'
-
-theme.accent = '#003f6b'
-theme.accent_hue_300 = '#174a78'
-theme.accent_hue_800 = '#00345f'
-
-theme.appBackground = '#212121'
-theme.background = '#192933'
-theme.panel_bg = '#192933'
-
-theme.background_hue_800 = '#121e25'
-
-theme.fg_normal = '#ffffffde'
-
-theme.fg_focus = '#e4e4e4'
-theme.fg_urgent = '#CC9393'
-theme.bat_fg_critical = '#232323'
-
-theme.bg_normal = theme.appBackground
-theme.bg_focus = '#5a5a5a'
-theme.bg_urgent = '#3F3F3F'
-theme.bg_systray = theme.background
-theme.bat_bg_critical = '#ff0000'
-theme.clockgf = '#ffffff'
-
--- Borders
-
-theme.border_width = 2
-theme.border_normal = theme.background
-theme.border_focus = theme.primary_hue_300
-theme.border_marked = '#CC9393'
-
--- Menu
-
-theme.menu_height = 16
-theme.menu_width = 160
-
--- Notifications
-theme.notification_font = 'Roboto Regular 12'
-theme.notification_bg = '#232323'
-theme.notification_fg = '#e4e4e4'
-theme.notification_border_width = 0
-theme.notification_border_color = '#232323'
-theme.notification_shape = gears.shape.rounded_rect
-theme.notification_opacity = 1
-theme.notification_margin = 30
-
--- Tooltips
-theme.tooltip_bg = '#232323'
---theme.tooltip_border_color = '#232323'
-theme.tooltip_border_width = 0
-theme.tooltip_shape = function(cr, w, h)
-    gears.shape.rounded_rect(cr, w, h, 6)
-end
-
--- Layout
-
-theme.layout_max = theme.icons .. 'layouts/arrow-expand-all.png'
-theme.layout_tile = theme.icons .. 'layouts/view-quilt.png'
-
--- Taglist
-
-theme.taglist_bg_empty = 'png:' .. theme.icons .. 'tag-list/unselected.png'
-theme.taglist_bg_occupied = 'png:' .. theme.icons .. 'tag-list/unselected.png'
-theme.taglist_bg_urgent = 'png:' .. theme.icons .. 'tag-list/urgent.png'
-theme.taglist_bg_focus = 'png:' .. theme.icons .. 'tag-list/selected.png'
-
--- Tasklist
-
-theme.tasklist_font = 'Roboto medium 11'
-theme.tasklist_bg_normal = theme.background
-theme.tasklist_bg_focus =
-    'linear:0,0:0,48:0,' ..
-    theme.background .. ':0.95,' .. theme.background .. ':0.95,' .. theme.fg_normal .. ':1,' .. theme.fg_normal
-theme.tasklist_bg_urgent = theme.primary_hue_800
-theme.tasklist_fg_focus = '#DDDDDD'
-theme.tasklist_fg_urgent = theme.fg_normal
-theme.tasklist_fg_normal = '#AAAAAA'
-
--- Misc
-
-theme.home = theme.dir .. '/icons/magnify.png'
-theme.add = theme.dir .. '/icons/plus.png'
-
-theme.icon_theme = 'Papirus-Dark'
-return theme
+return final_theme

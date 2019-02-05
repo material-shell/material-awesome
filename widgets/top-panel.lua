@@ -8,26 +8,8 @@ local clickable_container = require('widgets.clickable-container')
 local mat_icon_button = require('widgets.mat-icon-button')
 local apps = require('conf.apps')
 
--- home_button
-local searchIcon = wibox.widget.imagebox()
-searchIcon.image = beautiful.home
-local home_button = wibox.container.background(clickable_container(wibox.container.margin(searchIcon, 12, 12, 12, 12)), beautiful.primary)
-home_button:buttons(
-  gears.table.join(
-    awful.button(
-      {},
-      1,
-      nil,
-      function()
-        awful.spawn(apps.rofi)
-      end
-    )
-  )
-)
-
--- home_button
-
-local add_button = mat_icon_button(wibox.widget.imagebox(beautiful.add))
+local icons = require('theme.icons')
+local add_button = mat_icon_button(wibox.widget.imagebox(icons.plus))
 add_button:buttons(
   gears.table.join(
     awful.button(
@@ -48,7 +30,8 @@ add_button:buttons(
 )
 -- Create an imagebox widget which will contains an icon indicating which layout we're using.
 -- We need one layoutbox per screen.
-local LayoutBox = function(s)
+local LayoutBox =
+  function(s)
   local layoutBox = clickable_container(awful.widget.layoutbox(s))
   layoutBox:buttons(
     awful.util.table.join(
@@ -85,18 +68,23 @@ local LayoutBox = function(s)
   return layoutBox
 end
 
-local TopPanel = function(s)
+local TopPanel =
+  function(s, offset)
+  local offsetx = 0
+  if offset == true then
+    offsetx = 48
+  end
   local panel =
     wibox(
     {
       ontop = true,
       screen = s,
       height = 48,
-      width = s.geometry.width - 48,
-      x = 48,
-      y = 0,
+      width = s.geometry.width - offsetx,
+      x = s.geometry.x + offsetx,
+      y = s.geometry.y,
       stretch = false,
-      bg = beautiful.panel_bg,
+      bg = beautiful.background.hue_800,
       fg = beautiful.fg_normal,
       struts = {
         top = 48

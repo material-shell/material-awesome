@@ -1,15 +1,10 @@
 -- Default widget requirements
 local base = require('wibox.widget.base')
-local surface = require('gears.surface')
 local gtable = require('gears.table')
 local setmetatable = setmetatable
 
 -- Commons requirements
 local wibox = require('wibox')
-local base = require('wibox.widget.base')
-local gears = require('gears')
-local beautiful = require('beautiful')
-local mat_colors = require('theme.mat-colors')
 local clickable_container = require('widgets.clickable-container')
 -- Local declarations
 

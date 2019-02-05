@@ -10,7 +10,8 @@ local clickable_container = require('widgets.clickable-container')
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or 140
 
-local buildButton = function(icon, tooltipText)
+local buildButton =
+  function(icon, tooltipText)
   local abutton =
     wibox.widget {
     wibox.widget {
@@ -83,14 +84,23 @@ lock:connect_signal(
 )
 
 -- Get screen geometry
-local screen_width = awful.screen.focused().geometry.width
-local screen_height = awful.screen.focused().geometry.height
+local screen_geometry = awful.screen.focused().geometry
 
 -- Create the widget
 exit_screen =
-  wibox({x = 0, y = 0, visible = false, ontop = true, type = 'splash', height = screen_height, width = screen_width})
+  wibox(
+  {
+    x = screen_geometry.x,
+    y = screen_geometry.y,
+    visible = false,
+    ontop = true,
+    type = 'splash',
+    height = screen_geometry.height,
+    width = screen_geometry.width
+  }
+)
 
-exit_screen.bg = beautiful.background_hue_800 .. 'dd'
+exit_screen.bg = beautiful.background.hue_800 .. 'dd'
 exit_screen.fg = beautiful.exit_screen_fg or beautiful.wibar_fg or '#FEFEFE'
 
 local exit_screen_grabber

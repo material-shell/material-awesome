@@ -1,12 +1,10 @@
 -- Default widget requirements
 local base = require('wibox.widget.base')
-local surface = require('gears.surface')
 local gtable = require('gears.table')
 local setmetatable = setmetatable
 
 -- Commons requirements
 local wibox = require('wibox')
-local base = require('wibox.widget.base')
 local gears = require('gears')
 local beautiful = require('beautiful')
 local mat_colors = require('theme.mat-colors')
@@ -84,8 +82,8 @@ local function new(args)
     forced_height = 6,
     paddings = 0,
     shape = gears.shape.rounded_rect,
-    background_color = mat_colors.grey_800,
-    color = mat_colors.grey_600,
+    background_color = beautiful.background.hue_800,
+    color = beautiful.primary.hue_500,
     widget = wibox.widget.progressbar
   }
 
@@ -94,8 +92,8 @@ local function new(args)
     forced_height = 8,
     bar_shape = gears.shape.rounded_rect,
     bar_height = 0,
-    bar_color = beautiful.primary,
-    handle_color = mat_colors.grey_400,
+    bar_color = beautiful.primary.hue_500,
+    handle_color = beautiful.primary.hue_300,
     handle_shape = gears.shape.circle,
     handle_border_color = '#00000012',
     handle_border_width = 3,
