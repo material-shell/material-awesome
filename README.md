@@ -4,12 +4,9 @@
 A Material Theme for the Awesome window manager, version 4.3.
 
 ## Gallery
-
-![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/tiled.png?raw=true)
----
-
-![](https://github.com/PapyElGringo/.config/blob/master/awesome/screenshots/panel-open.png?raw=true)
----
+| Tiled                                                                                            |                                                 Panel                                                 |                                           Exit screen                                           |
+| ------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+| ![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/tiled.png?raw=true) | ![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/panel-open.png?raw=true) | ![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/exit.png?raw=true) |
 
 ## Requirements
 Complements are provided by [Lain](https://github.com/lcpz/lain) and [freedesktop](https://github.com/lcpz/freedesktop) and [scratch](https://github.com/proteansec/awesome-scratch).
