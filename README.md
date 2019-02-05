@@ -16,6 +16,7 @@ Complements are provided by [Lain](https://github.com/lcpz/lain) and [freedeskto
 
 Fonts are Roboto.
 
+Icons are? please :-)
 
 
 ##### F.A.Q.
