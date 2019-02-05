@@ -1,14 +1,14 @@
-# Material, Modern and Mouse driven AwesomeWM 4.x theme
+# Material, Modern and Mouse driven AwesomeWM 4.3 theme
 
 ## Description
-A Material Theme for the Awesome window manager, version 4.x.
+A Material Theme for the Awesome window manager, version 4.3.
 
 ## Gallery
 
 ![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/tiled.png?raw=true)
 ---
 
-![](https://github.com/PapyElGringo/.config/blob/master/awesome/screenshots/tabbed.png?raw=true)
+![](https://github.com/PapyElGringo/.config/blob/master/awesome/screenshots/panel-open.png?raw=true)
 ---
 
 ## Requirements

@@ -2,7 +2,6 @@ local awful = require('awful')
 require('awful.autofocus')
 local beautiful = require('beautiful')
 local hotkeys_popup = require('awful.hotkeys_popup').widget
-local lain = require('lain')
 
 local modkey = require('conf.keys.mod').modKey
 local altkey = require('conf.keys.mod').altKey
@@ -65,34 +64,6 @@ local globalKeys =
   ),
   -- Programms
   awful.key(
-    {},
-    'XF86Launch1',
-    function()
-      awful.spawn('subl3')
-    end
-  ),
-  awful.key(
-    {modkey},
-    'v',
-    function()
-      awful.util.spawn_with_shell('vivaldi-snapshot')
-    end
-  ),
-  awful.key(
-    {modkey},
-    't',
-    function()
-      awful.util.spawn_with_shell('caja')
-    end
-  ),
-  awful.key(
-    {modkey},
-    'r',
-    function()
-      awful.spawn('xterm -e ranger')
-    end
-  ),
-  awful.key(
     {modkey},
     'l',
     function()
@@ -103,7 +74,7 @@ local globalKeys =
     {},
     'Print',
     function()
-      awful.spawn("scrot -e 'mv %f ~/screenshots/'")
+      awful.util.spawn_with_shell('maim -s | xclip -selection clipboard -t image/png')
     end
   ),
   -- Standard program
@@ -204,14 +175,6 @@ local globalKeys =
     {description = 'dropdown application', group = 'launcher'}
   ),
   -- Widgets popups
-  awful.key(
-    {altkey},
-    'c',
-    function()
-      lain.widget.calendar.show(7)
-    end,
-    {description = 'show calendar', group = 'widgets'}
-  ),
   awful.key(
     {altkey},
     'h',

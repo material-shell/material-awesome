@@ -67,8 +67,8 @@ local LeftPanel =
     screen = s,
     bg = '#00000000',
     type = 'dock',
-    x = 0,
-    y = 0,
+    x = s.geometry.x,
+    y = s.geometry.y,
     width = s.geometry.width,
     height = s.geometry.height
   }
