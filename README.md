@@ -18,5 +18,5 @@
 ## Installation
 
 ```
-git clone git@github.com:PapyElGringo/material-awesome.git ~/.config/awesome
+git clone https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
 ```
