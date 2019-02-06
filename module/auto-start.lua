@@ -1,31 +1,11 @@
 local awful = require('awful')
 local filesystem = require('gears.filesystem')
--- Autostart windowless processes
-local function run_once(cmd_arr)
-  for _, cmd in ipairs(cmd_arr) do
-    local findme = cmd
-    local firstspace = cmd:find(' ')
-    if firstspace then
-      findme = cmd:sub(0, firstspace - 1)
-    end
-    awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
-  end
-end
 
--- entries must be comma-separated
--- run_once({'autorandr --change'})
---run_once({'wmname LG3D'}) -- Fix java problem
---run_once({'nm-applet'}) -- Network manager tray icon
-run_once({'blueberry-tray'}) -- Sound manager tray icon
-run_once({'xfce4-power-manager'}) -- Sound manager tray icon
-run_once(
-  {
-    'compton -b --config ' ..
-      filesystem.get_configuration_dir() .. '/conf/compton.conf --blur-method kawase --blur-strength 5'
-  }
-)
+awful.spawn.single_instance({'blueberry-tray'}) -- Bluetooth tray icon
+awful.spawn.single_instance({'xfce4-power-manager'}) -- Power manager
+awful.spawn.single_instance({'compton -b --config ' .. filesystem.get_configuration_dir() .. '/conf/compton.conf'})
 -- To allow gnome tools to ask authentication like pamac
-run_once(
+awful.spawn.single_instance(
   {
     '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)'
   }

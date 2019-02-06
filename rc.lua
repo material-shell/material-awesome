@@ -2,7 +2,6 @@ local gears = require('gears')
 local awful = require('awful')
 require('awful.autofocus')
 local beautiful = require('beautiful')
-local lain = require('lain')
 
 -- Theme
 beautiful.init(require('theme'))
@@ -23,7 +22,6 @@ _G.root.keys(require('conf.keys.global'))
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(
   function(s)
-    s.quake = lain.util.quake({app = awful.util.terminal})
     -- If wallpaper is a function, call it with the screen
     gears.wallpaper.set(beautiful.wallpaper, 1, true)
   end

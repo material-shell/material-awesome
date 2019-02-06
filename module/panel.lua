@@ -1,5 +1,4 @@
 local awful = require('awful')
-
 local LeftPanel = require('widgets.left-panel')
 local TopPanel = require('widgets.top-panel')
 

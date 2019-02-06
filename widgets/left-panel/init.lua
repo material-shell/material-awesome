@@ -1,15 +1,12 @@
 local awful = require('awful')
-local lain = require('lain.init')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local TagList = require('widgets.tag-list')
 local gears = require('gears')
 local apps = require('conf.apps')
 local list_icon_item = require('widgets.list-icon-item')
-local clockgf = beautiful.fg_normal
-local markup = lain.util.markup
 -- Clock / Calendar
-local textclock = wibox.widget.textclock(markup(clockgf, markup.font('Roboto Mono bold 11', '%H\n%M')))
+local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
 local clock_widget = wibox.container.margin(textclock, 13, 13, 8, 8)
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
