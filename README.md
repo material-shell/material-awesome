@@ -8,8 +8,15 @@
 |![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/tiled.png?raw=true)|![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/panel-open.png?raw=true)|![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/exit.png?raw=true)|
 
 ## Requirements
+- [AwesomeWM](https://awesomewm.org/) as the window manager
 - [Roboto](https://fonts.google.com/specimen/Roboto) as the **font**
 - [Rofi](https://github.com/DaveDavenport/rofi) for the app launcher
 - [Compton fork](https://github.com/tryone144/compton) for the compositor (blur and animations)
 - (Optional) [Materia](https://github.com/nana-4/materia-theme) as GTK theme
 - (Optional) [Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) as icon theme
+
+## Installation
+
+```
+git clone git@github.com:PapyElGringo/material-awesome.git ~/.config/awesome
+```
