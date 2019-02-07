@@ -39,12 +39,31 @@ local buildButton =
   return abutton
 end
 
+function suspend_command()
+  exit_screen_hide()
+  awful.spawn.with_shell('i3lock-fancy-rapid 5 3 -k --timecolor=ffffffff --datecolor=ffffffff & systemctl suspend')
+end
+function exit_command()
+  awesome.quit()
+end
+function lock_command()
+  exit_screen_hide()
+  awful.spawn.with_shell('sleep 1 && i3lock-fancy-rapid 5 3 -k --timecolor=ffffffff --datecolor=ffffffff')
+end
+function poweroff_command()
+  awful.spawn.with_shell('poweroff')
+  awful.keygrabber.stop(exit_screen_grabber)
+end
+function reboot_command()
+  awful.spawn.with_shell('reboot')
+  awful.keygrabber.stop(exit_screen_grabber)
+end
+
 local poweroff = buildButton(icons.power, 'Shutdown')
 poweroff:connect_signal(
   'button::release',
   function()
-    awful.spawn.with_shell('poweroff')
-    awful.keygrabber.stop(exit_screen_grabber)
+    poweroff_command()
   end
 )
 
@@ -52,8 +71,7 @@ local reboot = buildButton(icons.restart, 'Restart')
 reboot:connect_signal(
   'button::release',
   function()
-    awful.spawn.with_shell('reboot')
-    awful.keygrabber.stop(exit_screen_grabber)
+    reboot_command()
   end
 )
 
@@ -61,8 +79,7 @@ local suspend = buildButton(icons.sleep, 'Sleep')
 suspend:connect_signal(
   'button::release',
   function()
-    awful.spawn.with_shell('i3lock & systemctl suspend')
-    exit_screen_hide()
+    suspend_command()
   end
 )
 
@@ -70,7 +87,7 @@ local exit = buildButton(icons.logout, 'Logout')
 exit:connect_signal(
   'button::release',
   function()
-    awesome.quit()
+    exit_command()
   end
 )
 
@@ -78,8 +95,7 @@ local lock = buildButton(icons.lock, 'Lock')
 lock:connect_signal(
   'button::release',
   function()
-    awful.spawn.with_shell('i3lock-fancy-rapid 5 3 -k --timecolor=ffffffff --datecolor=ffffffff')
-    exit_screen_hide()
+    lock_command()
   end
 )
 
@@ -105,7 +121,9 @@ exit_screen.fg = beautiful.exit_screen_fg or beautiful.wibar_fg or '#FEFEFE'
 
 local exit_screen_grabber
 
-function exit_screen_hide()
+function exit_screen_hide(command)
+  if command then
+  end
   awful.keygrabber.stop(exit_screen_grabber)
   exit_screen.visible = false
 end
