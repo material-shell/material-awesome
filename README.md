@@ -20,3 +20,9 @@
 ```
 git clone https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
 ```
+
+> Awesome 4.3 is so new that most of the distribution didn't updated yet. If you want to install this config on Awesome 4.2 (current version on depo) use the specific awesome-4.2 branch
+
+```
+git clone -b awesome-4.2 https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
+```
