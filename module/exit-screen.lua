@@ -121,9 +121,7 @@ exit_screen.fg = beautiful.exit_screen_fg or beautiful.wibar_fg or '#FEFEFE'
 
 local exit_screen_grabber
 
-function exit_screen_hide(command)
-  if command then
-  end
+function exit_screen_hide()
   awful.keygrabber.stop(exit_screen_grabber)
   exit_screen.visible = false
 end

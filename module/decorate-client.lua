@@ -59,13 +59,17 @@ _G.client.connect_signal(
 _G.tag.connect_signal(
   'property::selected',
   function(t)
-    changesOnScreen(t.screen)
+    if t.screen then
+      changesOnScreen(t.screen)
+    end
   end
 )
 
 _G.tag.connect_signal(
   'property::layout',
   function(t)
-    changesOnScreen(t.screen)
+    if t.screen then
+      changesOnScreen(t.screen)
+    end
   end
 )
