@@ -9,15 +9,6 @@ local apps = require('conf.apps')
 -- Key bindings
 local globalKeys =
   awful.util.table.join(
-  -- X screen locker
-  awful.key(
-    {altkey, 'Control'},
-    'l',
-    function()
-      os.execute('xlock')
-    end,
-    {description = 'lock screen', group = 'hotkeys'}
-  ),
   -- Hotkeys
   awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
   -- Tag browsing
@@ -67,7 +58,7 @@ local globalKeys =
     {modkey},
     'l',
     function()
-      awful.util.spawn_with_shell('~/.config/scripts/lock.sh')
+      awful.spawn(apps.lock)
     end
   ),
   awful.key(

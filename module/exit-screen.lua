@@ -6,7 +6,7 @@ local naughty = require('naughty')
 local keygrabber = require('awful.keygrabber')
 local icons = require('theme.icons')
 local clickable_container = require('widgets.clickable-container')
-
+local apps = require('conf.apps')
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or 140
 
@@ -41,14 +41,14 @@ end
 
 function suspend_command()
   exit_screen_hide()
-  awful.spawn.with_shell('i3lock-fancy-rapid 5 3 -k --timecolor=ffffffff --datecolor=ffffffff & systemctl suspend')
+  awful.spawn.with_shell(apps.lock .. ' & systemctl suspend')
 end
 function exit_command()
   awesome.quit()
 end
 function lock_command()
   exit_screen_hide()
-  awful.spawn.with_shell('sleep 1 && i3lock-fancy-rapid 5 3 -k --timecolor=ffffffff --datecolor=ffffffff')
+  awful.spawn.with_shell('sleep 1 && ' .. apps.lock)
 end
 function poweroff_command()
   awful.spawn.with_shell('poweroff')
