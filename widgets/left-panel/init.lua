@@ -5,8 +5,12 @@ local TagList = require('widgets.tag-list')
 local gears = require('gears')
 local apps = require('conf.apps')
 local mat_list_item = require('widgets.mat-list-item')
--- Clock / Calendar
+-- Clock / Calendar 24h format
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
+
+-- Clock / Calendar 12AM/PM fornat
+-- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
+-- textclock.forced_height = 56
 local clock_widget = wibox.container.margin(textclock, 13, 13, 8, 8)
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
