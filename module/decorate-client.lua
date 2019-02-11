@@ -3,7 +3,15 @@ local gears = require('gears')
 local beautiful = require('beautiful')
 
 local function renderClient(client)
-  if client.screen.clientMode == 'maximized' and (client.type ~= 'dialog' and client.floating == false) then
+  if client.skip_decoration then
+    log_this('tutu')
+    return
+  end
+
+  if
+    (client.screen.clientMode == 'maximized' and (client.type ~= 'dialog' and client.floating == false)) or
+      client.fullscreen
+   then
     client.border_width = 0
     client.shape = function(cr, w, h)
       gears.shape.rectangle(cr, w, h)
@@ -21,7 +29,7 @@ local function changesOnScreen(currentScreen)
   local clientsCount = 0
 
   for i, client in pairs(currentScreen.clients) do
-    if client.type ~= 'dialog' and client.floating == false then
+    if client.type ~= 'dialog' and client.floating == false and not client.sticky then
       clientsCount = clientsCount + 1
     end
   end
@@ -53,6 +61,16 @@ _G.client.connect_signal(
   'unmanage',
   function(c)
     changesOnScreen(c.screen)
+  end
+)
+
+_G.client.connect_signal(
+  'property::fullscreen',
+  function(c)
+    renderClient(c)
+    if (c.screen) then
+      changesOnScreen(c.screen)
+    end
   end
 )
 

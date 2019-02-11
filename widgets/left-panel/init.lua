@@ -4,9 +4,13 @@ local wibox = require('wibox')
 local TagList = require('widgets.tag-list')
 local gears = require('gears')
 local apps = require('conf.apps')
-local list_icon_item = require('widgets.list-icon-item')
--- Clock / Calendar
+local mat_list_item = require('widgets.mat-list-item')
+-- Clock / Calendar 24h format
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
+
+-- Clock / Calendar 12AM/PM fornat
+-- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
+-- textclock.forced_height = 56
 local clock_widget = wibox.container.margin(textclock, 13, 13, 8, 8)
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
@@ -139,6 +143,70 @@ local LeftPanel =
     )
   )
 
+  local search_button =
+    wibox.widget {
+    wibox.widget {
+      wibox.widget {
+        image = icons.search,
+        widget = wibox.widget.imagebox
+      },
+      margins = 12,
+      widget = wibox.container.margin
+    },
+    wibox.widget {
+      text = 'Search Applications',
+      font = 'Roboto medium 13',
+      widget = wibox.widget.textbox
+    },
+    clickable = true,
+    widget = mat_list_item
+  }
+
+  search_button:buttons(
+    awful.util.table.join(
+      awful.button(
+        {},
+        1,
+        function()
+          run_rofi()
+        end
+      )
+    )
+  )
+
+  local exit_button =
+    wibox.widget {
+    wibox.widget {
+      wibox.widget {
+        image = icons.logout,
+        widget = wibox.widget.imagebox
+      },
+      margins = 12,
+      widget = wibox.container.margin
+    },
+    wibox.widget {
+      text = 'End work session',
+      font = 'Roboto medium 13',
+      widget = wibox.widget.textbox
+    },
+    clickable = true,
+    divider = true,
+    widget = mat_list_item
+  }
+
+  exit_button:buttons(
+    awful.util.table.join(
+      awful.button(
+        {},
+        1,
+        function()
+          panel:toggle()
+          exit_screen_show()
+        end
+      )
+    )
+  )
+
   panel:setup {
     layout = wibox.layout.align.horizontal,
     nil,
@@ -148,15 +216,7 @@ local LeftPanel =
         {
           layout = wibox.layout.fixed.vertical,
           {
-            list_icon_item(
-              {
-                icon = icons.search,
-                text = 'Search Applications',
-                callback = function()
-                  run_rofi()
-                end
-              }
-            ),
+            search_button,
             bg = beautiful.background.hue_800,
             widget = wibox.container.background
           },
@@ -173,17 +233,7 @@ local LeftPanel =
         {
           layout = wibox.layout.fixed.vertical,
           {
-            list_icon_item(
-              {
-                icon = icons.logout,
-                text = 'End work session',
-                divider = true,
-                callback = function()
-                  panel:toggle()
-                  exit_screen_show()
-                end
-              }
-            ),
+            exit_button,
             bg = beautiful.background.hue_800,
             widget = wibox.container.background
           }

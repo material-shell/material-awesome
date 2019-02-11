@@ -161,7 +161,7 @@ local globalKeys =
     {modkey},
     '`',
     function()
-      awful.spawn('tdrop -a alacritty')
+      toggle_quake()
     end,
     {description = 'dropdown application', group = 'launcher'}
   ),
