@@ -1,31 +1,34 @@
 local spawn = require('awful.spawn')
-local terminal = require('conf.apps').terminal
+local app = require('conf.apps').quake
 
-local shell_id
-local shell_client
+local quake_id
+local quake_client
 local opened = false
 function create_shell()
-  shell_id =
+  local toto
+  quake_id =
     spawn(
-    terminal,
+    app,
     {
-      skip_decoration = true,
-      anal = 'oto'
-    }
+      skip_taskbar = true
+    },
+    function()
+      log_this('nooooo')
+    end
   )
 end
 
 function open_quake()
-  shell_client.hidden = false
+  quake_client.hidden = false
 end
 
 function close_quake()
-  shell_client.hidden = true
+  quake_client.hidden = true
 end
 
 toggle_quake = function()
   opened = not opened
-  if not shell_client then
+  if not quake_client then
     create_shell()
   else
     if opened then
@@ -39,26 +42,47 @@ end
 _G.client.connect_signal(
   'manage',
   function(c)
-    log_this(tostring(c.anal))
-    if (c.pid == shell_id) then
-      shell_client = c
+    if (c.pid == quake_id) then
+      quake_client = c
       c.opacity = 0.9
       c.floating = true
       c.skip_taskbar = true
       c.ontop = true
+      c.above = true
       c.sticky = true
       c.hidden = not opened
-      c.skip_decoration = true
+      c.maximized_horizontal = true
     end
   end
 )
+
 _G.client.connect_signal(
   'unmanage',
   function(c)
-    if (c.pid == shell_id) then
+    if (c.pid == quake_id) then
       opened = false
-      shell_client = null
+      quake_client = nil
     end
   end
 )
-create_shell()
+
+awesome.connect_signal(
+  'spawn::canceled',
+  function()
+    log_this('fluutee')
+  end
+)
+awesome.connect_signal(
+  'spawn::initiated',
+  function(e)
+    -- log_this(tostring(e.name), tostring(e.id))
+  end
+)
+awesome.connect_signal(
+  'spawn::timeout',
+  function(e)
+    -- log_this(tostring(e.id))
+  end
+)
+
+-- create_shell()

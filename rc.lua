@@ -13,7 +13,7 @@ require('module.decorate-client')
 require('module.backdrop')
 require('module.panel')
 require('module.exit-screen')
--- require('module.quake-terminal')
+require('module.quake-terminal')
 
 -- Setup all configurations
 require('conf.client')
