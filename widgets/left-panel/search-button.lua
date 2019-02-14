@@ -9,7 +9,7 @@ local searchPlaceholder =
     {
       {
         text = 'Search Applications',
-        font = ' Roboto medium ' .. dpi(13),
+        font = ' Roboto medium 13',
         widget = wibox.widget.textbox
       },
       left = dpi(12),
