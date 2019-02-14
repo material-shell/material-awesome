@@ -14,6 +14,8 @@ local watch = require('awful.widget.watch')
 local wibox = require('wibox')
 local clickable_container = require('widgets.clickable-container')
 local gears = require('gears')
+local dpi = require('beautiful').xresources.apply_dpi
+
 -- acpi sample outputs
 -- Battery 0: Discharging, 75%, 01:51:38 remaining
 -- Battery 0: Charging, 53%, 00:57:43 until charged
@@ -31,7 +33,7 @@ local widget =
   layout = wibox.layout.fixed.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, 14, 14, 4, 4))
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), 4, 4))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -63,7 +65,7 @@ local battery_popup =
 local function show_battery_warning()
   naughty.notify {
     icon = PATH_TO_ICONS .. 'battery-alert.svg',
-    icon_size = 48,
+    icon_size = dpi(48),
     text = 'Huston, we have a problem',
     title = 'Battery is dying',
     timeout = 5,

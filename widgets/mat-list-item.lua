@@ -2,6 +2,7 @@
 local base = require('wibox.widget.base')
 local gtable = require('gears.table')
 local setmetatable = setmetatable
+local dpi = require('beautiful').xresources.apply_dpi
 
 -- Commons requirements
 local wibox = require('wibox')
@@ -33,8 +34,8 @@ function mat_list_item:build_clickable_container()
 end
 
 function mat_list_item:layout(_, width, height)
-  local content_width = width - 32
-  local content_x = 16
+  local content_width = width - dpi(32)
+  local content_x = dpi(dpi(16))
   local layout = {}
 
   -- Add divider if present
@@ -48,21 +49,21 @@ function mat_list_item:layout(_, width, height)
   end
 
   if self._private.prefix then
-    content_x = content_x + 54
-    content_width = content_width - 54
-    table.insert(layout, base.place_widget_at(self._private.prefix, 16, 0, 48, height))
+    content_x = content_x + dpi(54)
+    content_width = content_width - dpi(54)
+    table.insert(layout, base.place_widget_at(self._private.prefix, dpi(16), 0, dpi(48), height))
   end
 
   if self._private.suffix then
-    content_width = content_width - 54
-    table.insert(layout, base.place_widget_at(self._private.suffix, width - 40, 12, width, height))
+    content_width = content_width - dpi(54)
+    table.insert(layout, base.place_widget_at(self._private.suffix, width - dpi(40), dpi(12), width, height))
   end
   table.insert(layout, base.place_widget_at(self._private.content, content_x, 0, content_width, height))
   return layout
 end
 
 function mat_list_item:fit(_, width, height)
-  return width, 48
+  return width, dpi(48)
 end
 
 ---- Properties ----

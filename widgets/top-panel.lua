@@ -6,6 +6,7 @@ local gears = require('gears')
 local clickable_container = require('widgets.clickable-container')
 local mat_icon_button = require('widgets.mat-icon-button')
 local apps = require('conf.apps')
+local dpi = require('beautiful').xresources.apply_dpi
 
 local icons = require('theme.icons')
 local add_button = mat_icon_button(wibox.widget.imagebox(icons.plus))
@@ -71,14 +72,14 @@ local TopPanel =
   function(s, offset)
   local offsetx = 0
   if offset == true then
-    offsetx = 48
+    offsetx = dpi(48)
   end
   local panel =
     wibox(
     {
       ontop = true,
       screen = s,
-      height = 48,
+      height = dpi(48),
       width = s.geometry.width - offsetx,
       x = s.geometry.x + offsetx,
       y = s.geometry.y,
@@ -86,14 +87,14 @@ local TopPanel =
       bg = beautiful.background.hue_800,
       fg = beautiful.fg_normal,
       struts = {
-        top = 48
+        top = dpi(48)
       }
     }
   )
 
   panel:struts(
     {
-      top = 48
+      top = dpi(48)
     }
   )
 

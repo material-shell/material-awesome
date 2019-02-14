@@ -3,6 +3,7 @@ local mat_list_item = require('widgets.mat-list-item')
 local mat_slider = require('widgets.mat-slider')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
+local dpi = require('beautiful').xresources.apply_dpi
 
 local total_prev = 0
 local idle_prev = 0
@@ -38,7 +39,7 @@ local ram_meter =
       image = icons.memory,
       widget = wibox.widget.imagebox
     },
-    margins = 12,
+    margins = dpi(12),
     widget = wibox.container.margin
   },
   slider,

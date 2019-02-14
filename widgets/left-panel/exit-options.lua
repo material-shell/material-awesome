@@ -3,6 +3,7 @@ local wibox = require('wibox')
 local beautiful = require('beautiful')
 local gears = require('gears')
 local awful = require('awful')
+local dpi = require('beautiful').xresources.apply_dpi
 
 local suspend_button = mat_icon_button(wibox.widget.imagebox(beautiful.icons .. 'snowflake.png'))
 suspend_button:buttons(
@@ -59,16 +60,16 @@ local shutdown_menu = {
     },
     {
       layout = wibox.layout.fixed.horizontal,
-      forced_height = 48,
+      forced_height = dpi(48),
       suspend_button,
       restart_button,
       shutdown_button
     }
   },
-  top = 16,
-  left = 16,
-  right = 16,
-  bottom = 16,
+  top = dpi(16),
+  left = dpi(16),
+  right = dpi(16),
+  bottom = dpi(16),
   widget = wibox.container.margin
 }
 

@@ -2,9 +2,10 @@ local filesystem = require('gears.filesystem')
 local mat_colors = require('theme.mat-colors')
 local theme_dir = filesystem.get_configuration_dir() .. '/theme'
 local gears = require('gears')
+local dpi = require('beautiful').xresources.apply_dpi
 local theme = {}
 theme.icons = theme_dir .. '/icons/'
-theme.font = 'Roboto medium 10'
+theme.font = 'Roboto medium ' .. dpi(10)
 
 -- Colors Pallets
 
@@ -25,8 +26,8 @@ local awesome_overrides =
   theme.icons = theme.dir .. '/icons/'
   --theme.wallpaper = theme.dir .. '/wallpapers/pro-dark-shadow.png'
   theme.wallpaper = '#e0e0e0'
-  theme.font = 'Roboto medium 10'
-  theme.title_font = 'Roboto medium 14'
+  theme.font = 'Roboto medium ' .. dpi(10)
+  theme.title_font = 'Roboto medium ' .. dpi(14)
 
   theme.fg_normal = '#ffffffde'
 
@@ -41,31 +42,22 @@ local awesome_overrides =
 
   -- Borders
 
-  theme.border_width = 2
+  theme.border_width = dpi(2)
   theme.border_normal = theme.background.hue_800
   theme.border_focus = theme.primary.hue_300
   theme.border_marked = '#CC9393'
 
   -- Menu
 
-  theme.menu_height = 16
-  theme.menu_width = 160
+  theme.menu_height = dpi(16)
+  theme.menu_width = dpi(160)
 
-  -- Notifications
-  --[[ theme.notification_font = 'Roboto Regular 12'
-theme.notification_bg = '#232323'
-theme.notification_fg = '#e4e4e4'
-theme.notification_border_width = 0
-theme.notification_border_color = '#232323'
-theme.notification_shape = gears.shape.rounded_rect
-theme.notification_opacity = 1
-theme.notification_margin = 30 ]]
   -- Tooltips
   theme.tooltip_bg = '#232323'
   --theme.tooltip_border_color = '#232323'
   theme.tooltip_border_width = 0
   theme.tooltip_shape = function(cr, w, h)
-    gears.shape.rounded_rect(cr, w, h, 6)
+    gears.shape.rounded_rect(cr, w, h, dpi(6))
   end
 
   -- Layout
@@ -78,22 +70,28 @@ theme.notification_margin = 30 ]]
   theme.taglist_bg_empty = theme.background.hue_800
   theme.taglist_bg_occupied = theme.background.hue_800
   theme.taglist_bg_urgent =
-    'linear:0,0:48,0:0,' ..
-    theme.accent.hue_500 ..
-      ':0.08,' .. theme.accent.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
+    'linear:0,0:' ..
+    dpi(48) ..
+      ',0:0,' ..
+        theme.accent.hue_500 ..
+          ':0.08,' .. theme.accent.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
   theme.taglist_bg_focus =
-    'linear:0,0:48,0:0,' ..
-    theme.primary.hue_500 ..
-      ':0.08,' .. theme.primary.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
+    'linear:0,0:' ..
+    dpi(48) ..
+      ',0:0,' ..
+        theme.primary.hue_500 ..
+          ':0.08,' .. theme.primary.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
 
   -- Tasklist
 
-  theme.tasklist_font = 'Roboto medium 11'
+  theme.tasklist_font = 'Roboto medium ' .. dpi(11)
   theme.tasklist_bg_normal = theme.background.hue_800
   theme.tasklist_bg_focus =
-    'linear:0,0:0,48:0,' ..
-    theme.background.hue_800 ..
-      ':0.95,' .. theme.background.hue_800 .. ':0.95,' .. theme.fg_normal .. ':1,' .. theme.fg_normal
+    'linear:0,0:0,' ..
+    dpi(48) ..
+      ':0,' ..
+        theme.background.hue_800 ..
+          ':0.95,' .. theme.background.hue_800 .. ':0.95,' .. theme.fg_normal .. ':1,' .. theme.fg_normal
   theme.tasklist_bg_urgent = theme.primary.hue_800
   theme.tasklist_fg_focus = '#DDDDDD'
   theme.tasklist_fg_urgent = theme.fg_normal
@@ -102,7 +100,7 @@ theme.notification_margin = 30 ]]
   theme.icon_theme = 'Papirus-Dark'
 
   --Client
-  theme.border_width = 2
+  theme.border_width = dpi(2)
   theme.border_focus = theme.primary.hue_500
   theme.border_normal = theme.background.hue_800
 end

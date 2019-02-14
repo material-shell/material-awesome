@@ -1,6 +1,7 @@
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local clickable_container = require('widgets.clickable-container')
+local dpi = require('beautiful').xresources.apply_dpi
 
 local searchPlaceholder =
   wibox.widget {
@@ -8,13 +9,13 @@ local searchPlaceholder =
     {
       {
         text = 'Search Applications',
-        font = ' Roboto medium 13',
+        font = ' Roboto medium ' .. dpi(13),
         widget = wibox.widget.textbox
       },
-      left = 12,
-      right = 12,
-      top = 12,
-      bottom = 12,
+      left = dpi(12),
+      right = dpi(12),
+      top = dpi(12),
+      bottom = dpi(12),
       widget = wibox.container.margin
     },
     widget = clickable_container

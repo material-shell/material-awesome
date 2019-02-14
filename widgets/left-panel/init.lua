@@ -4,14 +4,17 @@ local wibox = require('wibox')
 local TagList = require('widgets.tag-list')
 local gears = require('gears')
 local apps = require('conf.apps')
+local dpi = require('beautiful').xresources.apply_dpi
+
 local mat_list_item = require('widgets.mat-list-item')
 -- Clock / Calendar 24h format
-local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
+local textclock = wibox.widget.textclock('<span font="Roboto Mono bold ' .. dpi(11) .. '">%H\n%M</span>')
+local dpi = require('beautiful').xresources.apply_dpi
 
 -- Clock / Calendar 12AM/PM fornat
--- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
+-- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold '..dpi(11)..'">%I\n%M</span>\n<span font="Roboto Mono bold '..dpi(9)..'">%p</span>')
 -- textclock.forced_height = 56
-local clock_widget = wibox.container.margin(textclock, 13, 13, 8, 8)
+local clock_widget = wibox.container.margin(textclock, dpi(13), dpi(13), dpi(8), dpi(8))
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
 local clickable_container = require('widgets.clickable-container')
@@ -28,10 +31,10 @@ local home_button =
   wibox.widget {
     wibox.widget {
       menu_icon,
-      top = 12,
-      left = 12,
-      right = 12,
-      bottom = 12,
+      top = dpi(12),
+      left = dpi(12),
+      right = dpi(12),
+      bottom = dpi(12),
       widget = wibox.container.margin
     },
     widget = clickable_container
@@ -45,9 +48,9 @@ local LeftPanel =
   local panel =
     wibox {
     screen = s,
-    width = 448,
+    width = dpi(448),
     height = s.geometry.height,
-    x = s.geometry.x + 48 - 448,
+    x = s.geometry.x + dpi(48) - dpi(448),
     y = s.geometry.y,
     ontop = true,
     bg = beautiful.background.hue_800,
@@ -58,7 +61,7 @@ local LeftPanel =
 
   panel:struts(
     {
-      left = 48
+      left = dpi(48)
     }
   )
 
@@ -101,7 +104,7 @@ local LeftPanel =
 
   local closePanel = function()
     menu_icon.image = icons.menu
-    panel.x = 48 - 448
+    panel.x = dpi(48) - dpi(448)
     backdrop.visible = false
   end
 
@@ -147,12 +150,12 @@ local LeftPanel =
         image = icons.search,
         widget = wibox.widget.imagebox
       },
-      margins = 12,
+      margins = dpi(12),
       widget = wibox.container.margin
     },
     wibox.widget {
       text = 'Search Applications',
-      font = 'Roboto medium 13',
+      font = 'Roboto medium ' .. dpi(13),
       widget = wibox.widget.textbox
     },
     clickable = true,
@@ -178,12 +181,12 @@ local LeftPanel =
         image = icons.logout,
         widget = wibox.widget.imagebox
       },
-      margins = 12,
+      margins = dpi(12),
       widget = wibox.container.margin
     },
     wibox.widget {
       text = 'End work session',
-      font = 'Roboto medium 13',
+      font = 'Roboto medium ' .. dpi(13),
       widget = wibox.widget.textbox
     },
     clickable = true,
@@ -241,7 +244,7 @@ local LeftPanel =
     },
     {
       layout = wibox.layout.align.vertical,
-      forced_width = 48,
+      forced_width = dpi(48),
       {
         -- Left widgets
         layout = wibox.layout.fixed.vertical,
@@ -254,7 +257,7 @@ local LeftPanel =
       {
         -- Right widgets
         layout = wibox.layout.fixed.vertical,
-        wibox.container.margin(systray, 10, 10),
+        wibox.container.margin(systray, dpi(10), dpi(10)),
         require('widgets.package-updater'),
         require('widgets.wifi'),
         require('widgets.battery'),

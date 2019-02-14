@@ -7,6 +7,8 @@ local keygrabber = require('awful.keygrabber')
 local icons = require('theme.icons')
 local clickable_container = require('widgets.clickable-container')
 local apps = require('conf.apps')
+local dpi = require('beautiful').xresources.apply_dpi
+
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or 140
 
@@ -20,10 +22,10 @@ local buildButton =
           image = icon,
           widget = wibox.widget.imagebox
         },
-        top = 16,
-        bottom = 16,
-        left = 16,
-        right = 16,
+        top = dpi(16),
+        bottom = dpi(16),
+        left = dpi(16),
+        right = dpi(16),
         widget = wibox.container.margin
       },
       shape = gears.shape.circle,
@@ -31,8 +33,8 @@ local buildButton =
       forced_height = icon_size,
       widget = clickable_container
     },
-    left = 24,
-    right = 24,
+    left = dpi(24),
+    right = dpi(24),
     widget = wibox.container.margin
   }
 
