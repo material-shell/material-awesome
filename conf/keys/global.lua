@@ -232,7 +232,7 @@ local globalKeys =
     {},
     'XF86AudioNext',
     function()
-      log_this('yolo')
+      --
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
@@ -240,7 +240,7 @@ local globalKeys =
     {},
     'XF86PowerDown',
     function()
-      log_this('XF86PowerDown')
+      --
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),

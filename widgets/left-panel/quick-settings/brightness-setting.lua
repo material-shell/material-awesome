@@ -27,6 +27,7 @@ watch(
     local brightness = string.match(stdout, '(%d+)')
 
     slider:set_value(tonumber(brightness))
+    collectgarbage('collect')
   end
 )
 

@@ -38,6 +38,7 @@ watch(
 
     total_prev = total
     idle_prev = idle
+    collectgarbage('collect')
   end
 )
 

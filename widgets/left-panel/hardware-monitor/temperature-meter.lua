@@ -17,6 +17,7 @@ watch(
   function(widget, stdout, stderr, exitreason, exitcode)
     local temp = stdout:match('(%d+)')
     slider:set_value((temp / 1000) / max_temp * 100)
+    collectgarbage('collect')
   end
 )
 

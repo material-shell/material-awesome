@@ -76,8 +76,6 @@ local LeftPanel =
 
   local run_rofi =
     function()
-    -- panel.rofi_pid = awful.spawn(apps.rofi)
-    --log_this(panel.rofi_pid)
     awesome.spawn(
       apps.rofi,
       false,
@@ -88,7 +86,6 @@ local LeftPanel =
         panel:toggle()
       end
     )
-    --awful.spawn.with_line_callback(apps.rofi, { exit = function() print("rofi exited") end })
   end
 
   local openPanel = function(should_run_rofi)

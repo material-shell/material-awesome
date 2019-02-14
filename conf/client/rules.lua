@@ -1,6 +1,6 @@
 local awful = require('awful')
 local beautiful = require('beautiful')
-
+local gears = require('gears')
 local client_keys = require('conf.client.keys')
 local client_buttons = require('conf.client.buttons')
 
@@ -10,21 +10,17 @@ awful.rules.rules = {
   {
     rule = {},
     properties = {
-      border_width = 0,
-      border_color = beautiful.border_normal,
       focus = awful.client.focus.filter,
       raise = true,
-      maximized = false,
-      maximized_horizontal = false,
-      maximized_vertical = false,
-      sticky = false,
       keys = client_keys,
       buttons = client_buttons,
       screen = awful.screen.preferred,
-      placement = awful.placement.no_offscreen,
-      size_hints_honor = false,
-      fullscreen = false
+      placement = awful.placement.no_offscreen
     }
+  },
+  {
+    rule_any = {name = {'QuakeTerminal'}},
+    properties = {skip_decoration = true}
   },
   -- Titlebars
   {
@@ -33,11 +29,13 @@ awful.rules.rules = {
       placement = awful.placement.centered,
       ontop = true,
       floating = true,
-      drawBackdrop = true
+      drawBackdrop = true,
+      shape = function()
+        return function(cr, w, h)
+          gears.shape.rounded_rect(cr, w, h, 8)
+        end
+      end,
+      skip_decoration = true
     }
-  },
-  {
-    rule = {class = 'Peek'},
-    properties = {fullscreen = true, sticky = true, ontop = true, floating = true}
   }
 }

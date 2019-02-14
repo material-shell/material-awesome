@@ -16,6 +16,7 @@ watch(
   function(widget, stdout, stderr, exitreason, exitcode)
     local space_consumed = stdout:match('(%d+)')
     slider:set_value(tonumber(space_consumed))
+    collectgarbage('collect')
   end
 )
 

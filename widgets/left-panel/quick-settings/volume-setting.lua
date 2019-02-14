@@ -26,6 +26,7 @@ watch(
     local mute = string.match(stdout, '%[(o%D%D?)%]')
     local volume = string.match(stdout, '(%d?%d?%d)%%')
     slider:set_value(tonumber(volume))
+    collectgarbage('collect')
   end
 )
 

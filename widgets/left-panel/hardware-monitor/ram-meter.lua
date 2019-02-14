@@ -27,6 +27,7 @@ watch(
       used_swap,
       free_swap = stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)')
     slider:set_value(used / total * 100)
+    collectgarbage('collect')
   end
 )
 
