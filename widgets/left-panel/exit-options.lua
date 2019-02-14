@@ -55,7 +55,7 @@ local shutdown_menu = {
         font = beautiful.title_font,
         widget = wibox.widget.textbox
       },
-      bottom = 8,
+      bottom = dpi(8),
       widget = wibox.container.margin
     },
     {

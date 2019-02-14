@@ -10,7 +10,7 @@ local apps = require('conf.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Appearance
-local icon_size = beautiful.exit_screen_icon_size or 140
+local icon_size = beautiful.exit_screen_icon_size or dpi(140)
 
 local buildButton =
   function(icon, tooltipText)

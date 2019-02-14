@@ -2,6 +2,7 @@
 local base = require('wibox.widget.base')
 local gtable = require('gears.table')
 local setmetatable = setmetatable
+local dpi = require('beautiful').xresources.apply_dpi
 
 -- Commons requirements
 local wibox = require('wibox')
@@ -44,9 +45,9 @@ end
 
 function mat_slider:layout(_, width, height)
   local layout = {}
-  table.insert(layout, base.place_widget_at(self._private.progress_bar, 0, 21, width, height - 42))
+  table.insert(layout, base.place_widget_at(self._private.progress_bar, 0, dpi(21), width, height - dpi(42)))
   if (not self._private.read_only) then
-    table.insert(layout, base.place_widget_at(self._private.slider, 0, 6, width, height - dpi(12)))
+    table.insert(layout, base.place_widget_at(self._private.slider, 0, dpi(6), width, height - dpi(12)))
   end
   return layout
 end
@@ -79,7 +80,7 @@ local function new(args)
     wibox.widget {
     max_value = 100,
     value = 25,
-    forced_height = 6,
+    forced_height = dpi(6),
     paddings = 0,
     shape = gears.shape.rounded_rect,
     background_color = beautiful.background.hue_800,
@@ -89,14 +90,14 @@ local function new(args)
 
   ret._private.slider =
     wibox.widget {
-    forced_height = 8,
+    forced_height = dpi(8),
     bar_shape = gears.shape.rounded_rect,
     bar_height = 0,
     bar_color = beautiful.primary.hue_500,
     handle_color = beautiful.primary.hue_300,
     handle_shape = gears.shape.circle,
     handle_border_color = '#00000012',
-    handle_border_width = 3,
+    handle_border_width = dpi(3),
     value = 25,
     widget = wibox.widget.slider
   }

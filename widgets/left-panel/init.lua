@@ -9,7 +9,6 @@ local dpi = require('beautiful').xresources.apply_dpi
 local mat_list_item = require('widgets.mat-list-item')
 -- Clock / Calendar 24h format
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold ' .. dpi(11) .. '">%H\n%M</span>')
-local dpi = require('beautiful').xresources.apply_dpi
 
 -- Clock / Calendar 12AM/PM fornat
 -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold '..dpi(11)..'">%I\n%M</span>\n<span font="Roboto Mono bold '..dpi(9)..'">%p</span>')
