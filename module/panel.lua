@@ -45,3 +45,13 @@ _G.client.connect_signal(
     updateBarsVisibility()
   end
 )
+
+_G.client.connect_signal(
+  'unmanage',
+  function(c)
+    if c.fullscreen then
+      c.screen.selected_tag.fullscreenMode = false
+      updateBarsVisibility()
+    end
+  end
+)

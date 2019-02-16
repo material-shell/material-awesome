@@ -117,7 +117,7 @@ watch(
       widgetIconName = widgetIconName .. '-' .. wifi_strength_rounded
       widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
     else
-      connect = false
+      connected = false
       widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '-off' .. '.svg')
     end
     if (connected and (essid == 'N/A' or essid == nil)) then
