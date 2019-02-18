@@ -1,21 +1,27 @@
-# Material and Mouse driven theme for [AwesomeWM 4.3](https://awesomewm.org/) 
+## Material and Mouse driven theme for [AwesomeWM 4.3](https://awesomewm.org/) 
 
-### An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) following the [Material Design guidelines](https://material.io) with a performant opiniated mouse/keyboard workflow to increase daily productivity and comfort.
+An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) following the [Material Design guidelines](https://material.io) with a performant opiniated mouse/keyboard workflow to increase daily productivity and comfort.
+
 [![](https://i.imgur.com/2KwiRGH.gif)](https://www.reddit.com/r/unixporn/comments/anp51q/awesome_material_awesome_workflow/)
 
 | Tiled         | Panel         | Exit screen   |
 |:-------------:|:-------------:|:-------------:|
 |![](https://i.imgur.com/fELCtep.png)|![](https://i.imgur.com/7IthpQS.png)|![](https://i.imgur.com/rcKOLYQ.png)|
 
-## Requirements
+
+
+## Installation
+
+### 1) Install the dependencies
 - [AwesomeWM](https://awesomewm.org/) as the window manager
 - [Roboto](https://fonts.google.com/specimen/Roboto) as the **font**
 - [Rofi](https://github.com/DaveDavenport/rofi) for the app launcher
 - [Compton fork](https://github.com/tryone144/compton) for the compositor (blur and animations)
 - (Optional) [Materia](https://github.com/nana-4/materia-theme) as GTK theme
 - (Optional) [Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) as icon theme
+- (Optional) [lxappearance](https://sourceforge.net/projects/lxde/files/LXAppearance/) to set up the gtk and icon theme
 
-## Installation
+### 2) Clone the configuration
 
 ```
 git clone https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
@@ -26,3 +32,7 @@ git clone https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
 ```
 git clone -b awesome-4.2 https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
 ```
+
+### 3) Start lxappearance to active the **icon** theme and **GTK** theme
+
+### 4) Check the [configuration]() folder to start discover the tweaks available

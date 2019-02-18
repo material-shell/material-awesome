@@ -3,7 +3,7 @@ local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
 local capi = {button = _G.button}
 local gears = require('gears')
-local clickable_container = require('widgets.clickable-container')
+local clickable_container = require('widget.clickable-container')
 --- Common method to create buttons.
 -- @tab buttons
 -- @param object

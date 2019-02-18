@@ -5,15 +5,14 @@ local beautiful = require('beautiful')
 local naughty = require('naughty')
 local keygrabber = require('awful.keygrabber')
 local icons = require('theme.icons')
-local clickable_container = require('widgets.clickable-container')
-local apps = require('conf.apps')
+local clickable_container = require('widget.clickable-container')
+local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or dpi(140)
 
-local buildButton =
-  function(icon, tooltipText)
+local buildButton = function(icon, tooltipText)
   local abutton =
     wibox.widget {
     wibox.widget {

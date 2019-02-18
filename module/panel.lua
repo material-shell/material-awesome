@@ -1,6 +1,6 @@
 local awful = require('awful')
-local LeftPanel = require('widgets.left-panel')
-local TopPanel = require('widgets.top-panel')
+local LeftPanel = require('widget.left-panel')
+local TopPanel = require('widget.top-panel')
 
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(

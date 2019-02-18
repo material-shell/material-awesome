@@ -1,4 +1,4 @@
-local mat_icon_button = require('widgets.mat-icon-button')
+local mat_icon_button = require('widget.mat-icon-button')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 local gears = require('gears')

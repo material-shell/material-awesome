@@ -1,11 +1,11 @@
 local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
-local TaskList = require('widgets.task-list')
+local TaskList = require('widget.task-list')
 local gears = require('gears')
-local clickable_container = require('widgets.clickable-container')
-local mat_icon_button = require('widgets.mat-icon-button')
-local apps = require('conf.apps')
+local clickable_container = require('widget.clickable-container')
+local mat_icon_button = require('widget.mat-icon-button')
+local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local icons = require('theme.icons')
@@ -30,8 +30,7 @@ add_button:buttons(
 )
 -- Create an imagebox widget which will contains an icon indicating which layout we're using.
 -- We need one layoutbox per screen.
-local LayoutBox =
-  function(s)
+local LayoutBox = function(s)
   local layoutBox = clickable_container(awful.widget.layoutbox(s))
   layoutBox:buttons(
     awful.util.table.join(
@@ -68,8 +67,7 @@ local LayoutBox =
   return layoutBox
 end
 
-local TopPanel =
-  function(s, offset)
+local TopPanel = function(s, offset)
   local offsetx = 0
   if offset == true then
     offsetx = dpi(48)

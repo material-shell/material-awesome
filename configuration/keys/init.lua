@@ -1,4 +1,4 @@
 return {
-    mod = require('conf.keys.mod'),
-    global = require('conf.keys.global')
+  mod = require('configuration.keys.mod'),
+  global = require('configuration.keys.global')
 }

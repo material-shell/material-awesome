@@ -1,6 +1,6 @@
 local beautiful = require('beautiful')
 local wibox = require('wibox')
-local clickable_container = require('widgets.clickable-container')
+local clickable_container = require('widget.clickable-container')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local searchPlaceholder =

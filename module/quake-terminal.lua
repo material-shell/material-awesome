@@ -1,5 +1,5 @@
 local spawn = require('awful.spawn')
-local app = require('conf.apps').quake
+local app = require('configuration.apps').quake
 
 local quake_id
 local quake_client

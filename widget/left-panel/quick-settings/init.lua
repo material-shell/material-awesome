@@ -1,5 +1,5 @@
 local wibox = require('wibox')
-local mat_list_item = require('widgets.mat-list-item')
+local mat_list_item = require('widget.mat-list-item')
 local dpi = require('beautiful').xresources.apply_dpi
 
 return wibox.widget {
@@ -11,7 +11,7 @@ return wibox.widget {
     },
     widget = mat_list_item
   },
-  require('widgets.left-panel.quick-settings.volume-setting'),
-  require('widgets.left-panel.quick-settings.brightness-setting'),
+  require('widget.left-panel.quick-settings.volume-setting'),
+  require('widget.left-panel.quick-settings.brightness-setting'),
   layout = wibox.layout.fixed.vertical
 }

@@ -16,9 +16,9 @@ require('module.exit-screen')
 require('module.quake-terminal')
 
 -- Setup all configurations
-require('conf.client')
-require('conf.tags')
-_G.root.keys(require('conf.keys.global'))
+require('configuration.client')
+require('configuration.tags')
+_G.root.keys(require('configuration.keys.global'))
 
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(

@@ -1,4 +1,4 @@
 return {
-    keys = require('conf.keys'),
-    apps = require('conf.apps')
+  keys = require('configuration.keys'),
+  apps = require('configuration.apps')
 }

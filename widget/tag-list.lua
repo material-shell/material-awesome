@@ -2,8 +2,8 @@ local awful = require('awful')
 local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
 local capi = {button = _G.button}
-local clickable_container = require('widgets.clickable-container')
-local modkey = require('conf.keys.mod').modKey
+local clickable_container = require('widget.clickable-container')
+local modkey = require('configuration.keys.mod').modKey
 --- Common method to create buttons.
 -- @tab buttons
 -- @param object
@@ -108,8 +108,7 @@ local function list_update(w, buttons, label, data, objects)
   end
 end
 
-local TagList =
-  function(s)
+local TagList = function(s)
   return awful.widget.taglist(
     s,
     awful.widget.taglist.filter.all,

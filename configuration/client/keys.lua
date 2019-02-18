@@ -1,7 +1,7 @@
 local awful = require('awful')
 require('awful.autofocus')
-local modkey = require('conf.keys.mod').modKey
-local altkey = require('conf.keys.mod').altKey
+local modkey = require('configuration.keys.mod').modKey
+local altkey = require('configuration.keys.mod').altKey
 
 local clientKeys =
   awful.util.table.join(

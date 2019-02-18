@@ -1,12 +1,12 @@
 local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
-local TagList = require('widgets.tag-list')
+local TagList = require('widget.tag-list')
 local gears = require('gears')
-local apps = require('conf.apps')
+local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
-local mat_list_item = require('widgets.mat-list-item')
+local mat_list_item = require('widget.mat-list-item')
 -- Clock / Calendar 24h format
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
 
@@ -16,7 +16,7 @@ local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%
 local clock_widget = wibox.container.margin(textclock, dpi(13), dpi(13), dpi(8), dpi(8))
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
-local clickable_container = require('widgets.clickable-container')
+local clickable_container = require('widget.clickable-container')
 local icons = require('theme.icons')
 
 local menu_icon =
@@ -42,8 +42,7 @@ local home_button =
   widget = wibox.container.background
 }
 
-local LeftPanel =
-  function(s)
+local LeftPanel = function(s)
   local panel =
     wibox {
     screen = s,
@@ -76,8 +75,7 @@ local LeftPanel =
     height = s.geometry.height
   }
 
-  local run_rofi =
-    function()
+  local run_rofi = function()
     awesome.spawn(
       apps.rofi,
       false,
@@ -225,8 +223,8 @@ local LeftPanel =
             opacity = 0.08,
             widget = wibox.widget.separator
           },
-          require('widgets.left-panel.quick-settings'),
-          require('widgets.left-panel.hardware-monitor')
+          require('widget.left-panel.quick-settings'),
+          require('widget.left-panel.hardware-monitor')
         },
         nil,
         {
@@ -257,9 +255,9 @@ local LeftPanel =
         -- Right widgets
         layout = wibox.layout.fixed.vertical,
         wibox.container.margin(systray, dpi(10), dpi(10)),
-        require('widgets.package-updater'),
-        require('widgets.wifi'),
-        require('widgets.battery'),
+        require('widget.package-updater'),
+        require('widget.wifi'),
+        require('widget.battery'),
         -- Clock
         clock_widget
       }

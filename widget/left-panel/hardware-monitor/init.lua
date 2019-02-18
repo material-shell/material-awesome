@@ -1,5 +1,5 @@
 local wibox = require('wibox')
-local mat_list_item = require('widgets.mat-list-item')
+local mat_list_item = require('widget.mat-list-item')
 local dpi = require('beautiful').xresources.apply_dpi
 
 return wibox.widget {
@@ -11,9 +11,9 @@ return wibox.widget {
     },
     widget = mat_list_item
   },
-  require('widgets.left-panel.hardware-monitor.cpu-meter'),
-  require('widgets.left-panel.hardware-monitor.ram-meter'),
-  require('widgets.left-panel.hardware-monitor.temperature-meter'),
-  require('widgets.left-panel.hardware-monitor.harddrive-meter'),
+  require('widget.left-panel.hardware-monitor.cpu-meter'),
+  require('widget.left-panel.hardware-monitor.ram-meter'),
+  require('widget.left-panel.hardware-monitor.temperature-meter'),
+  require('widget.left-panel.hardware-monitor.harddrive-meter'),
   layout = wibox.layout.fixed.vertical
 }

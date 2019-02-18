@@ -1,1 +1,1 @@
-require('conf.client.rules')
+require('configuration.client.rules')
