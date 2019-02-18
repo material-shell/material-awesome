@@ -1,11 +1,11 @@
 # Material and Mouse driven theme for [AwesomeWM 4.3](https://awesomewm.org/) 
 
 ### An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) following the [Material Design guidelines](https://material.io) with a performant opiniated mouse/keyboard workflow to increase daily productivity and comfort.
-[![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/material-demo.gif?raw=true)](https://www.reddit.com/r/unixporn/comments/anp51q/awesome_material_awesome_workflow/)
+[![](https://imgur.com/2KwiRGH)](https://www.reddit.com/r/unixporn/comments/anp51q/awesome_material_awesome_workflow/)
 
 | Tiled         | Panel         | Exit screen   |
 |:-------------:|:-------------:|:-------------:|
-|![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/tiled.png?raw=true)|![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/panel-open.png?raw=true)|![](https://github.com/PapyElGringo/material-awesome/blob/master/screenshots/exit.png?raw=true)|
+|![](https://imgur.com/fELCtep)|![](https://imgur.com/7IthpQS)|![](https://imgur.com/rcKOLYQ)|
 
 ## Requirements
 - [AwesomeWM](https://awesomewm.org/) as the window manager
