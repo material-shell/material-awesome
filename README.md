@@ -2,7 +2,7 @@
 
 An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) following the [Material Design guidelines](https://material.io) with a performant opiniated mouse/keyboard workflow to increase daily productivity and comfort.
 
-[![](https://i.imgur.com/2KwiRGH.gif)](https://www.reddit.com/r/unixporn/comments/anp51q/awesome_material_awesome_workflow/)
+> [Watch this short video of the workflow](https://www.reddit.com/r/unixporn/comments/anp51q/awesome_material_awesome_workflow/)
 
 | Tiled         | Panel         | Exit screen   |
 |:-------------:|:-------------:|:-------------:|
@@ -33,6 +33,16 @@ git clone https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
 git clone -b awesome-4.2 https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
 ```
 
-### 3) Start lxappearance to active the **icon** theme and **GTK** theme
+### 3) Set the themes
+Start lxappearance to active the **icon** theme and **GTK** theme
 
-### 4) Check the [configuration]() folder to start discover the tweaks available
+### 4) Read the documentation
+The documentation live within the source code.
+
+The project is split in functional directories and in each of them there is a readme where you can get additionnal informations about the them.
+
+* [Configuration](./configuration) is about all the **settings** available
+* [Layout](./layout) hold the **disposition** of all the widgets
+* [Module](./module) contain all the **features** available
+* [Theme](./theme) hold all the **aestetic** aspects
+* [Widget](./widget) contain all the **widgets** available
