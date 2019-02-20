@@ -7,6 +7,8 @@ local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local mat_list_item = require('widget.mat-list-item')
+local mat_icon = require('widget.mat-icon')
+
 -- Clock / Calendar 24h format
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
 
@@ -21,21 +23,15 @@ local icons = require('theme.icons')
 
 local menu_icon =
   wibox.widget {
-  image = icons.menu,
-  widget = wibox.widget.imagebox
+  icon = icons.menu,
+  size = dpi(24),
+  widget = mat_icon
 }
 
 local home_button =
   wibox.widget {
   wibox.widget {
-    wibox.widget {
-      menu_icon,
-      top = dpi(12),
-      left = dpi(12),
-      right = dpi(12),
-      bottom = dpi(12),
-      widget = wibox.container.margin
-    },
+    menu_icon,
     widget = clickable_container
   },
   bg = beautiful.primary.hue_500,
@@ -90,7 +86,7 @@ local LeftPanel = function(s)
 
   local openPanel = function(should_run_rofi)
     panel.x = 0
-    menu_icon.image = icons.close
+    menu_icon.icon = icons.close
     backdrop.visible = true
     panel.visible = false
     panel.visible = true
@@ -100,7 +96,7 @@ local LeftPanel = function(s)
   end
 
   local closePanel = function()
-    menu_icon.image = icons.menu
+    menu_icon.icon = icons.menu
     panel.x = dpi(48) - dpi(448)
     backdrop.visible = false
   end
@@ -143,12 +139,9 @@ local LeftPanel = function(s)
   local search_button =
     wibox.widget {
     wibox.widget {
-      wibox.widget {
-        image = icons.search,
-        widget = wibox.widget.imagebox
-      },
-      margins = dpi(12),
-      widget = wibox.container.margin
+      icon = icons.search,
+      size = dpi(24),
+      widget = mat_icon
     },
     wibox.widget {
       text = 'Search Applications',
@@ -174,12 +167,9 @@ local LeftPanel = function(s)
   local exit_button =
     wibox.widget {
     wibox.widget {
-      wibox.widget {
-        image = icons.logout,
-        widget = wibox.widget.imagebox
-      },
-      margins = dpi(12),
-      widget = wibox.container.margin
+      icon = icons.logout,
+      size = dpi(24),
+      widget = mat_icon
     },
     wibox.widget {
       text = 'End work session',

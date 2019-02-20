@@ -12,7 +12,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 local icons = require('theme.icons')
 
-local add_button = mat_icon_button(mat_icon(icons.plus, 24))
+local add_button = mat_icon_button(mat_icon(icons.plus, dpi(24)))
 add_button:buttons(
   gears.table.join(
     awful.button(

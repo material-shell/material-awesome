@@ -1,6 +1,7 @@
 local wibox = require('wibox')
 local mat_list_item = require('widget.mat-list-item')
 local mat_slider = require('widget.mat-slider')
+local mat_icon = require('widget.mat-icon')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local dpi = require('beautiful').xresources.apply_dpi
@@ -25,12 +26,9 @@ watch(
 local temperature_meter =
   wibox.widget {
   wibox.widget {
-    wibox.widget {
-      image = icons.thermometer,
-      widget = wibox.widget.imagebox
-    },
-    margins = dpi(12),
-    widget = wibox.container.margin
+    icon = icons.thermometer,
+    size = dpi(24),
+    widget = mat_icon
   },
   slider,
   widget = mat_list_item

@@ -1,6 +1,7 @@
 local wibox = require('wibox')
 local mat_list_item = require('widget.mat-list-item')
 local mat_slider = require('widget.mat-slider')
+local mat_icon = require('widget.mat-icon')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local dpi = require('beautiful').xresources.apply_dpi
@@ -18,15 +19,8 @@ watch(
   'bash -c "free | grep -z Mem.*Swap.*"',
   1,
   function(widget, stdout, stderr, exitreason, exitcode)
-    total,
-      used,
-      free,
-      shared,
-      buff_cache,
-      available,
-      total_swap,
-      used_swap,
-      free_swap = stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)')
+    total, used, free, shared, buff_cache, available, total_swap, used_swap, free_swap =
+      stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)')
     slider:set_value(used / total * 100)
     collectgarbage('collect')
   end
@@ -35,12 +29,9 @@ watch(
 local ram_meter =
   wibox.widget {
   wibox.widget {
-    wibox.widget {
-      image = icons.memory,
-      widget = wibox.widget.imagebox
-    },
-    margins = dpi(12),
-    widget = wibox.container.margin
+    icon = icons.memory,
+    size = dpi(24),
+    widget = mat_icon
   },
   slider,
   widget = mat_list_item
