@@ -14,9 +14,11 @@ end
 
 run_once({'blueberry-tray'}) -- Bluetooth tray icon
 run_once({'xfce4-power-manager'}) -- Power manager
-run_once('compton --config ' .. filesystem.get_configuration_dir() .. '/conf/compton.conf')
+run_once({'compton --config ' .. filesystem.get_configuration_dir() .. '/conf/compton.conf'})
 -- To allow gnome tools to ask authentication like pamac
 run_once(
-  '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)'
+  {
+    '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)'
+  }
 )
 -- run_once({'pamac-tray'})
