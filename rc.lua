@@ -6,12 +6,14 @@ local beautiful = require('beautiful')
 -- Theme
 beautiful.init(require('theme'))
 
+-- Layout
+require('layout')
+
 -- Init all modules
 require('module.notifications')
 require('module.auto-start')
 require('module.decorate-client')
 require('module.backdrop')
-require('module.panel')
 require('module.exit-screen')
 require('module.quake-terminal')
 

@@ -5,11 +5,14 @@ local TaskList = require('widget.task-list')
 local gears = require('gears')
 local clickable_container = require('widget.clickable-container')
 local mat_icon_button = require('widget.mat-icon-button')
+local mat_icon = require('widget.mat-icon')
+
 local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local icons = require('theme.icons')
-local add_button = mat_icon_button(wibox.widget.imagebox(icons.plus))
+
+local add_button = mat_icon_button(mat_icon(icons.plus, 24))
 add_button:buttons(
   gears.table.join(
     awful.button(
@@ -28,6 +31,7 @@ add_button:buttons(
     )
   )
 )
+
 -- Create an imagebox widget which will contains an icon indicating which layout we're using.
 -- We need one layoutbox per screen.
 local LayoutBox = function(s)
@@ -111,9 +115,7 @@ local TopPanel = function(s, offset)
       LayoutBox(s)
     }
   }
-  print('jan')
-  -- local test = panel:get_children_by_id('test')[1]
-  gears.debug.dump(test)
+
   return panel
 end
 

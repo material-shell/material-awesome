@@ -223,8 +223,8 @@ local LeftPanel = function(s)
             opacity = 0.08,
             widget = wibox.widget.separator
           },
-          require('widget.left-panel.quick-settings'),
-          require('widget.left-panel.hardware-monitor')
+          require('widget.quick-settings'),
+          require('widget.hardware-monitor')
         },
         nil,
         {

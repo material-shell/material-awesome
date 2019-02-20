@@ -12,7 +12,7 @@ An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) foll
 
 ## Installation
 
-### 1) Install the dependencies
+### 1) Get all the dependencies
 - [AwesomeWM](https://awesomewm.org/) as the window manager
 - [Roboto](https://fonts.google.com/specimen/Roboto) as the **font**
 - [Rofi](https://github.com/DaveDavenport/rofi) for the app launcher
@@ -34,7 +34,7 @@ git clone -b awesome-4.2 https://github.com/PapyElGringo/material-awesome.git ~/
 ```
 
 ### 3) Set the themes
-Start lxappearance to active the **icon** theme and **GTK** theme
+Start **lxappearance** to active the **icon** theme and **GTK** theme
 
 ### 4) Read the documentation
 The documentation live within the source code.
