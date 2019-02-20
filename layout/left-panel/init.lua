@@ -1,51 +1,20 @@
 local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
-local TagList = require('widget.tag-list')
-local gears = require('gears')
 local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
-local mat_list_item = require('widget.mat-list-item')
-local mat_icon = require('widget.mat-icon')
+local left_panel = function(screen)
+  local action_bar_width = dpi(48)
+  local panel_content_width = dpi(400)
 
--- Clock / Calendar 24h format
-local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
-
--- Clock / Calendar 12AM/PM fornat
--- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
--- textclock.forced_height = 56
-local clock_widget = wibox.container.margin(textclock, dpi(13), dpi(13), dpi(8), dpi(8))
-local systray = wibox.widget.systray()
-systray:set_horizontal(false)
-local clickable_container = require('widget.clickable-container')
-local icons = require('theme.icons')
-
-local menu_icon =
-  wibox.widget {
-  icon = icons.menu,
-  size = dpi(24),
-  widget = mat_icon
-}
-
-local home_button =
-  wibox.widget {
-  wibox.widget {
-    menu_icon,
-    widget = clickable_container
-  },
-  bg = beautiful.primary.hue_500,
-  widget = wibox.container.background
-}
-
-local LeftPanel = function(s)
   local panel =
     wibox {
-    screen = s,
-    width = dpi(448),
-    height = s.geometry.height,
-    x = s.geometry.x + dpi(48) - dpi(448),
-    y = s.geometry.y,
+    screen = screen,
+    width = action_bar_width,
+    height = screen.geometry.height,
+    x = screen.geometry.x,
+    y = screen.geometry.y,
     ontop = true,
     bg = beautiful.background.hue_800,
     fg = beautiful.fg_normal
@@ -55,24 +24,24 @@ local LeftPanel = function(s)
 
   panel:struts(
     {
-      left = dpi(48)
+      left = action_bar_width
     }
   )
 
   local backdrop =
     wibox {
     ontop = true,
-    screen = s,
+    screen = screen,
     bg = '#00000000',
     type = 'dock',
-    x = s.geometry.x,
-    y = s.geometry.y,
-    width = s.geometry.width,
-    height = s.geometry.height
+    x = screen.geometry.x,
+    y = screen.geometry.y,
+    width = screen.geometry.width,
+    height = screen.geometry.height
   }
 
-  local run_rofi = function()
-    awesome.spawn(
+  function panel:run_rofi()
+    _G.awesome.spawn(
       apps.rofi,
       false,
       false,
@@ -85,20 +54,22 @@ local LeftPanel = function(s)
   end
 
   local openPanel = function(should_run_rofi)
-    panel.x = 0
-    menu_icon.icon = icons.close
+    panel.width = action_bar_width + panel_content_width
     backdrop.visible = true
     panel.visible = false
     panel.visible = true
+    panel:get_children_by_id('panel_content')[1].visible = true
     if should_run_rofi then
-      run_rofi()
+      panel:run_rofi()
     end
+    panel:emit_signal('opened')
   end
 
   local closePanel = function()
-    menu_icon.icon = icons.menu
-    panel.x = dpi(48) - dpi(448)
+    panel.width = action_bar_width
+    panel:get_children_by_id('panel_content')[1].visible = false
     backdrop.visible = false
+    panel:emit_signal('closed')
   end
 
   function panel:toggle(should_run_rofi)
@@ -122,139 +93,23 @@ local LeftPanel = function(s)
     )
   )
 
-  home_button:buttons(
-    gears.table.join(
-      awful.button(
-        {},
-        1,
-        nil,
-        function()
-          panel:toggle()
-          --awful.spawn(apps.rofi)
-        end
-      )
-    )
-  )
-
-  local search_button =
-    wibox.widget {
-    wibox.widget {
-      icon = icons.search,
-      size = dpi(24),
-      widget = mat_icon
-    },
-    wibox.widget {
-      text = 'Search Applications',
-      font = 'Roboto medium 13',
-      widget = wibox.widget.textbox
-    },
-    clickable = true,
-    widget = mat_list_item
-  }
-
-  search_button:buttons(
-    awful.util.table.join(
-      awful.button(
-        {},
-        1,
-        function()
-          run_rofi()
-        end
-      )
-    )
-  )
-
-  local exit_button =
-    wibox.widget {
-    wibox.widget {
-      icon = icons.logout,
-      size = dpi(24),
-      widget = mat_icon
-    },
-    wibox.widget {
-      text = 'End work session',
-      font = 'Roboto medium 13',
-      widget = wibox.widget.textbox
-    },
-    clickable = true,
-    divider = true,
-    widget = mat_list_item
-  }
-
-  exit_button:buttons(
-    awful.util.table.join(
-      awful.button(
-        {},
-        1,
-        function()
-          panel:toggle()
-          exit_screen_show()
-        end
-      )
-    )
-  )
-
   panel:setup {
     layout = wibox.layout.align.horizontal,
     nil,
     {
-      {
-        layout = wibox.layout.align.vertical,
-        {
-          layout = wibox.layout.fixed.vertical,
-          {
-            search_button,
-            bg = beautiful.background.hue_800,
-            widget = wibox.container.background
-          },
-          wibox.widget {
-            orientation = 'horizontal',
-            forced_height = 1,
-            opacity = 0.08,
-            widget = wibox.widget.separator
-          },
-          require('widget.quick-settings'),
-          require('widget.hardware-monitor')
-        },
-        nil,
-        {
-          layout = wibox.layout.fixed.vertical,
-          {
-            exit_button,
-            bg = beautiful.background.hue_800,
-            widget = wibox.container.background
-          }
-        }
-      },
+      id = 'panel_content',
       bg = beautiful.background.hue_900,
-      widget = wibox.container.background
-    },
-    {
-      layout = wibox.layout.align.vertical,
-      forced_width = dpi(48),
+      widget = wibox.container.background,
+      visible = false,
+      forced_width = panel_content_width,
       {
-        -- Left widgets
-        layout = wibox.layout.fixed.vertical,
-        home_button,
-        -- Create a taglist widget
-        TagList(s)
-      },
-      --s.mytasklist, -- Middle widget
-      nil,
-      {
-        -- Right widgets
-        layout = wibox.layout.fixed.vertical,
-        wibox.container.margin(systray, dpi(10), dpi(10)),
-        require('widget.package-updater'),
-        require('widget.wifi'),
-        require('widget.battery'),
-        -- Clock
-        clock_widget
+        require('layout.left-panel.dashboard')(screen, panel),
+        layout = wibox.layout.stack
       }
-    }
+    },
+    require('layout.left-panel.action-bar')(screen, panel, action_bar_width)
   }
-
   return panel
 end
 
-return LeftPanel
+return left_panel
