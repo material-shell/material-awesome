@@ -10,7 +10,7 @@ return wibox.widget {
     },
     widget = mat_list_item
   },
-  require('widget.quick-settings.volume-setting'),
-  require('widget.quick-settings.brightness-setting'),
+  require('widget.volume.volume-slider'),
+  require('widget.brightness.brightness-slider'),
   layout = wibox.layout.fixed.vertical
 }

@@ -10,9 +10,9 @@ return wibox.widget {
     },
     widget = mat_list_item
   },
-  require('widget.hardware-monitor.cpu-meter'),
-  require('widget.hardware-monitor.ram-meter'),
-  require('widget.hardware-monitor.temperature-meter'),
-  require('widget.hardware-monitor.harddrive-meter'),
+  require('widget.cpu.cpu-meter'),
+  require('widget.ram.ram-meter'),
+  require('widget.temperature.temperature-meter'),
+  require('widget.harddrive.harddrive-meter'),
   layout = wibox.layout.fixed.vertical
 }
