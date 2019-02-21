@@ -1,20 +1,16 @@
 local spawn = require('awful.spawn')
-local app = require('conf.apps').quake
+local app = require('configuration.apps').default.quake
 
 local quake_id
 local quake_client
 local opened = false
 function create_shell()
-  local toto
   quake_id =
     spawn(
     app,
     {
-      skip_taskbar = true
-    },
-    function()
-      log_this('nooooo')
-    end
+      skip_decoration = true
+    }
   )
 end
 
@@ -63,25 +59,6 @@ _G.client.connect_signal(
       opened = false
       quake_client = nil
     end
-  end
-)
-
-awesome.connect_signal(
-  'spawn::canceled',
-  function()
-    log_this('fluutee')
-  end
-)
-awesome.connect_signal(
-  'spawn::initiated',
-  function(e)
-    -- log_this(tostring(e.name), tostring(e.id))
-  end
-)
-awesome.connect_signal(
-  'spawn::timeout',
-  function(e)
-    -- log_this(tostring(e.id))
   end
 )
 

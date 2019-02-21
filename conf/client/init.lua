@@ -1,1 +1,0 @@
-require('conf.client.rules')

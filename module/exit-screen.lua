@@ -2,18 +2,15 @@ local awful = require('awful')
 local gears = require('gears')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
-local naughty = require('naughty')
-local keygrabber = require('awful.keygrabber')
 local icons = require('theme.icons')
-local clickable_container = require('widgets.clickable-container')
-local apps = require('conf.apps')
+local clickable_container = require('widget.material.clickable-container')
+local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or dpi(140)
 
-local buildButton =
-  function(icon, tooltipText)
+local buildButton = function(icon)
   local abutton =
     wibox.widget {
     wibox.widget {
@@ -43,22 +40,22 @@ end
 
 function suspend_command()
   exit_screen_hide()
-  awful.spawn.with_shell(apps.lock .. ' & systemctl suspend')
+  awful.spawn.with_shell(apps.default.lock .. ' & systemctl suspend')
 end
 function exit_command()
-  awesome.quit()
+  _G.awesome.quit()
 end
 function lock_command()
   exit_screen_hide()
-  awful.spawn.with_shell('sleep 1 && ' .. apps.lock)
+  awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
 end
 function poweroff_command()
   awful.spawn.with_shell('poweroff')
-  awful.keygrabber.stop(exit_screen_grabber)
+  awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 function reboot_command()
   awful.spawn.with_shell('reboot')
-  awful.keygrabber.stop(exit_screen_grabber)
+  awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 
 local poweroff = buildButton(icons.power, 'Shutdown')
