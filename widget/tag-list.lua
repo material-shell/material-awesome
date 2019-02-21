@@ -2,7 +2,7 @@ local awful = require('awful')
 local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
 local capi = {button = _G.button}
-local clickable_container = require('widget.clickable-container')
+local clickable_container = require('widget.material.clickable-container')
 local modkey = require('configuration.keys.mod').modKey
 --- Common method to create buttons.
 -- @tab buttons

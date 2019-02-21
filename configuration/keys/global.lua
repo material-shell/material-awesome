@@ -36,7 +36,7 @@ local globalKeys =
     {modkey},
     'e',
     function()
-      screen.primary.left_panel:toggle(true)
+      _G.screen.primary.left_panel:toggle(true)
     end,
     {description = 'show main menu', group = 'awesome'}
   ),
@@ -160,7 +160,7 @@ local globalKeys =
     {modkey},
     '`',
     function()
-      toggle_quake()
+      _G.toggle_quake()
     end,
     {description = 'dropdown application', group = 'launcher'}
   ),
@@ -247,7 +247,7 @@ local globalKeys =
     {},
     'XF86PowerOff',
     function()
-      exit_screen_show()
+      _G.exit_screen_show()
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   )

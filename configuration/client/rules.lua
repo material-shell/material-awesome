@@ -1,5 +1,4 @@
 local awful = require('awful')
-local beautiful = require('beautiful')
 local gears = require('gears')
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')

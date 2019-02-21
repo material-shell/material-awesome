@@ -12,7 +12,7 @@ local awful = require('awful')
 local naughty = require('naughty')
 local watch = require('awful.widget.watch')
 local wibox = require('wibox')
-local clickable_container = require('widget.clickable-container')
+local clickable_container = require('widget.material.clickable-container')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 
@@ -82,7 +82,7 @@ local last_battery_check = os.time()
 watch(
   'acpi -i',
   1,
-  function(widget, stdout, stderr, exitreason, exitcode)
+  function(_, stdout)
     local batteryIconName = 'battery'
 
     local battery_info = {}
@@ -98,7 +98,7 @@ watch(
     end
 
     local capacity = 0
-    for i, cap in ipairs(capacities) do
+    for _, cap in ipairs(capacities) do
       capacity = capacity + cap
     end
 
@@ -117,7 +117,7 @@ watch(
     if (charge >= 0 and charge < 15) then
       if status ~= 'Charging' and os.difftime(os.time(), last_battery_check) > 300 then
         -- if 5 minutes have elapsed since the last warning
-        last_battery_check = time()
+        last_battery_check = _G.time()
 
         show_battery_warning()
       end

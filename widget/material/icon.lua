@@ -2,11 +2,9 @@
 local base = require('wibox.widget.base')
 local gtable = require('gears.table')
 local setmetatable = setmetatable
-local dpi = require('beautiful').xresources.apply_dpi
 
 -- Commons requirements
 local wibox = require('wibox')
-local clickable_container = require('widget.clickable-container')
 
 -- Local declarations
 

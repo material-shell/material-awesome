@@ -1,6 +1,6 @@
 local wibox = require('wibox')
 local gears = require('gears')
-local clickable_container = require('widget.clickable-container')
+local clickable_container = require('widget.material.clickable-container')
 local dpi = require('beautiful').xresources.apply_dpi
 
 function build(imagebox, args)

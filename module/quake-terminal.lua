@@ -62,23 +62,4 @@ _G.client.connect_signal(
   end
 )
 
-awesome.connect_signal(
-  'spawn::canceled',
-  function()
-    log_this('fluutee')
-  end
-)
-awesome.connect_signal(
-  'spawn::initiated',
-  function(e)
-    -- log_this(tostring(e.name), tostring(e.id))
-  end
-)
-awesome.connect_signal(
-  'spawn::timeout',
-  function(e)
-    -- log_this(tostring(e.id))
-  end
-)
-
 -- create_shell()

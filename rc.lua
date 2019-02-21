@@ -24,7 +24,7 @@ _G.root.keys(require('configuration.keys.global'))
 
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(
-  function(s)
+  function()
     -- If wallpaper is a function, call it with the screen
     gears.wallpaper.set(beautiful.wallpaper, 1, true)
   end

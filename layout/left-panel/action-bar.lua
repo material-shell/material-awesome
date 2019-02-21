@@ -2,11 +2,11 @@ local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local gears = require('gears')
-local mat_icon = require('widget.mat-icon')
+local mat_icon = require('widget.material.icon')
 local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
 local TagList = require('widget.tag-list')
-local clickable_container = require('widget.clickable-container')
+local clickable_container = require('widget.material.clickable-container')
 
 return function(screen, panel, action_bar_width)
   -- Clock / Calendar 24h format

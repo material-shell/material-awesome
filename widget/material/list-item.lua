@@ -6,7 +6,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 -- Commons requirements
 local wibox = require('wibox')
-local clickable_container = require('widget.clickable-container')
+local clickable_container = require('widget.material.clickable-container')
 -- Local declarations
 
 local mat_list_item = {mt = {}}
@@ -62,7 +62,7 @@ function mat_list_item:layout(_, width, height)
   return layout
 end
 
-function mat_list_item:fit(_, width, height)
+function mat_list_item:fit(_, width)
   return width, dpi(48)
 end
 
@@ -111,7 +111,7 @@ function mat_list_item:set_prefix(widget)
   self:emit_signal('widget::layout_changed')
 end
 
-function mat_list_item:get_prefix(value)
+function mat_list_item:get_prefix()
   return self._private.prefix
 end
 
@@ -123,7 +123,7 @@ function mat_list_item:set_suffix(widget)
   self:emit_signal('widget::layout_changed')
 end
 
-function mat_list_item:get_suffix(value)
+function mat_list_item:get_suffix()
   return self._private.suffix
 end
 
@@ -164,7 +164,7 @@ function mat_list_item:set_children(children)
   end
 end
 
-local function new(widget, args)
+local function new(widget)
   local ret =
     base.make_widget(
     nil,

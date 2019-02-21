@@ -12,7 +12,7 @@ local awful = require('awful')
 local naughty = require('naughty')
 local watch = require('awful.widget.watch')
 local wibox = require('wibox')
-local clickable_container = require('widget.clickable-container')
+local clickable_container = require('widget.material.clickable-container')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 
@@ -53,8 +53,7 @@ widget_button:buttons(
   )
 )
 -- Alternative to naughty.notify - tooltip. You can compare both and choose the preferred one
-local widget_popup =
-  awful.tooltip(
+awful.tooltip(
   {
     objects = {widget_button},
     mode = 'outside',
@@ -94,7 +93,7 @@ local last_battery_check = os.time()
 watch(
   'pamac checkupdates',
   60,
-  function(widget, stdout, stderr, exitreason, exitcode)
+  function(_, stdout)
     numOfUpdatesAvailable = tonumber(stdout:match('.-\n'):match('%d*'))
     local widgetIconName
     if (numOfUpdatesAvailable ~= nil) then
@@ -108,29 +107,6 @@ watch(
     collectgarbage('collect')
   end,
   widget
-)
-local function grabText()
-  if connected then
-    awful.spawn.easy_async(
-      'iw dev ' .. interface .. ' link',
-      function(stdout, stderr, reason, exit_code)
-        string.gsub(
-          stdout,
-          'SSID:(.-)\n',
-          function(r)
-            essid = r
-          end
-        )
-      end
-    )
-  end
-end
-
-widget:connect_signal(
-  'mouse::enter',
-  function()
-    grabText()
-  end
 )
 
 return widget_button

@@ -1,7 +1,7 @@
 local wibox = require('wibox')
-local mat_list_item = require('widget.mat-list-item')
-local mat_slider = require('widget.mat-slider')
-local mat_icon = require('widget.mat-icon')
+local mat_list_item = require('widget.material.list-item')
+local mat_slider = require('widget.material.slider')
+local mat_icon = require('widget.material.icon')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local dpi = require('beautiful').xresources.apply_dpi
@@ -18,7 +18,7 @@ local slider =
 watch(
   [[bash -c "cat /proc/stat | grep '^cpu '"]],
   1,
-  function(widget, stdout, stderr, exitreason, exitcode)
+  function(_, stdout)
     local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice =
       stdout:match('(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s')
 
