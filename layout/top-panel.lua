@@ -7,7 +7,6 @@ local clickable_container = require('widget.clickable-container')
 local mat_icon_button = require('widget.mat-icon-button')
 local mat_icon = require('widget.mat-icon')
 
-local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local icons = require('theme.icons')

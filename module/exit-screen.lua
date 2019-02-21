@@ -42,22 +42,22 @@ end
 
 function suspend_command()
   exit_screen_hide()
-  awful.spawn.with_shell(apps.lock .. ' & systemctl suspend')
+  awful.spawn.with_shell(apps.default.lock .. ' & systemctl suspend')
 end
 function exit_command()
-  awesome.quit()
+  _G.awesome.quit()
 end
 function lock_command()
   exit_screen_hide()
-  awful.spawn.with_shell('sleep 1 && ' .. apps.lock)
+  awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
 end
 function poweroff_command()
   awful.spawn.with_shell('poweroff')
-  awful.keygrabber.stop(exit_screen_grabber)
+  awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 function reboot_command()
   awful.spawn.with_shell('reboot')
-  awful.keygrabber.stop(exit_screen_grabber)
+  awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 
 local poweroff = buildButton(icons.power, 'Shutdown')

@@ -1,20 +1,16 @@
 local spawn = require('awful.spawn')
-local app = require('configuration.apps').quake
+local app = require('configuration.apps').default.quake
 
 local quake_id
 local quake_client
 local opened = false
 function create_shell()
-  local toto
   quake_id =
     spawn(
     app,
     {
-      skip_taskbar = true
-    },
-    function()
-      log_this('nooooo')
-    end
+      skip_decoration = true
+    }
   )
 end
 

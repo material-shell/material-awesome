@@ -37,7 +37,6 @@ local globalKeys =
     'e',
     function()
       screen.primary.left_panel:toggle(true)
-      --awful.spawn(apps.rofi)
     end,
     {description = 'show main menu', group = 'awesome'}
   ),
@@ -58,7 +57,7 @@ local globalKeys =
     {modkey},
     'l',
     function()
-      awful.spawn(apps.lock)
+      awful.spawn(apps.default.lock)
     end
   ),
   awful.key(
@@ -73,7 +72,7 @@ local globalKeys =
     {modkey},
     'x',
     function()
-      awful.spawn(apps.terminal)
+      awful.spawn(apps.default.terminal)
     end,
     {description = 'open a terminal', group = 'launcher'}
   ),
