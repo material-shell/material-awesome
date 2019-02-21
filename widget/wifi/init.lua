@@ -9,7 +9,6 @@
 -------------------------------------------------
 
 local awful = require('awful')
-local naughty = require('naughty')
 local watch = require('awful.widget.watch')
 local wibox = require('wibox')
 local clickable_container = require('widget.material.clickable-container')
@@ -50,8 +49,7 @@ widget_button:buttons(
   )
 )
 -- Alternative to naughty.notify - tooltip. You can compare both and choose the preferred one
-local widget_popup =
-  awful.tooltip(
+awful.tooltip(
   {
     objects = {widget_button},
     mode = 'outside',
@@ -69,31 +67,11 @@ local widget_popup =
   }
 )
 
--- To use colors from beautiful theme put
--- following lines in rc.lua before require("battery"):
---beautiful.tooltip_fg = beautiful.fg_normal
---beautiful.tooltip_bg = beautiful.bg_normal
-
-local function show_battery_warning()
-  naughty.notify {
-    icon = PATH_TO_ICONS .. 'battery-alert.svg',
-    icon_size = dpi(48),
-    text = 'Huston, we have a problem',
-    title = 'Battery is dying',
-    timeout = 5,
-    hover_timeout = 0.5,
-    position = 'bottom_left',
-    bg = '#d32f2f',
-    fg = '#EEE9EF',
-    width = dpi(248)
-  }
-end
-
 local function grabText()
   if connected then
     awful.spawn.easy_async(
       'iw dev ' .. interface .. ' link',
-      function(stdout, stderr, reason, exit_code)
+      function(stdout)
         essid = stdout:match('SSID:(.-)\n')
         if (essid == nil) then
           essid = 'N/A'
@@ -103,11 +81,10 @@ local function grabText()
   end
 end
 
-local last_battery_check = os.time()
 watch(
   "awk 'NR==3 {printf \"%3.0f\" ,($3/70)*100}' /proc/net/wireless",
   5,
-  function(widget, stdout, stderr, exitreason, exitcode)
+  function(_, stdout)
     local widgetIconName = 'wifi-strength'
     local wifi_strength = tonumber(stdout)
     if (wifi_strength ~= nil) then

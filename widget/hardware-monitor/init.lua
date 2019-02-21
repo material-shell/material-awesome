@@ -1,6 +1,5 @@
 local wibox = require('wibox')
 local mat_list_item = require('widget.material.list-item')
-local dpi = require('beautiful').xresources.apply_dpi
 
 return wibox.widget {
   wibox.widget {
