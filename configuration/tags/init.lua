@@ -55,8 +55,7 @@ awful.layout.layouts = {
 awful.screen.connect_for_each_screen(
   function(s)
     for i, tag in pairs(tags) do
-      local new_tag =
-        awful.tag.add(
+      awful.tag.add(
         i,
         {
           icon = tag.icon,
@@ -73,7 +72,7 @@ awful.screen.connect_for_each_screen(
   end
 )
 
-tag.connect_signal(
+_G.tag.connect_signal(
   'property::layout',
   function(t)
     local currentLayout = awful.tag.getproperty(t, 'layout')
