@@ -14,7 +14,15 @@ awful.rules.rules = {
       keys = client_keys,
       buttons = client_buttons,
       screen = awful.screen.preferred,
-      placement = awful.placement.no_offscreen
+      placement = awful.placement.no_offscreen,
+      floating = false,
+      maximized = false,
+      above = false,
+      below = false,
+      ontop = false,
+      sticky = false,
+      maximized_horizontal = false,
+      maximized_vertical = false
     }
   },
   {

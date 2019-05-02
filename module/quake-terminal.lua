@@ -1,7 +1,7 @@
 local spawn = require('awful.spawn')
 local app = require('configuration.apps').default.quake
 
-local quake_id
+local quake_id = 'notnil'
 local quake_client
 local opened = false
 function create_shell()
