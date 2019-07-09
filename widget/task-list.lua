@@ -41,13 +41,14 @@ local function list_update(w, buttons, label, data, objects)
   w:reset()
   for i, o in ipairs(objects) do
     local cache = data[o]
-    local ib, cb, tb, cbm, bgb, tbm, ibm, l, ll, bg_clickable
+    local ib, cb, tb, cbm, bgb, tbm, ibm, tt, l, ll, bg_clickable
     if cache then
       ib = cache.ib
       tb = cache.tb
       bgb = cache.bgb
       tbm = cache.tbm
       ibm = cache.ibm
+      tt  = cache.tt
     else
       ib = wibox.widget.imagebox()
       tb = wibox.widget.textbox()
@@ -95,12 +96,21 @@ local function list_update(w, buttons, label, data, objects)
 
       l:buttons(create_buttons(buttons, o))
 
+      -- Tooltip to display whole title, if it was truncated
+      tt = awful.tooltip({
+        objects = {tb},
+        mode = 'outside',
+        align = 'bottom',
+        delay_show = 1,
+      })
+
       data[o] = {
         ib = ib,
         tb = tb,
         bgb = bgb,
         tbm = tbm,
-        ibm = ibm
+        ibm = ibm,
+        tt  = tt
       }
     end
 
@@ -115,6 +125,10 @@ local function list_update(w, buttons, label, data, objects)
       local textOnly = text:match('>(.-)<')
       if (textOnly:len() > 24) then
         text = text:gsub('>(.-)<', '>' .. textOnly:sub(1, 21) .. '...<')
+        tt:set_text(textOnly)
+        tt:add_to_object(tb)
+      else
+        tt:remove_from_object(tb)
       end
       if not tb:set_markup_silently(text) then
         tb:set_markup('<i>&lt;Invalid text&gt;</i>')
